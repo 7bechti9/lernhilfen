@@ -22,10 +22,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 0 60px 0; }
 
-  .hero {
-    background: linear-gradient(135deg, #09090f 0%, #0f0f2a 50%, #09090f 100%);
-    padding: 30px 20px 22px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
-  }
+  .hero { background: linear-gradient(135deg, #09090f 0%, #0f0f2a 50%, #09090f 100%); padding: 30px 20px 22px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 200px; background: radial-gradient(ellipse, rgba(56,189,248,0.12) 0%, transparent 70%); pointer-events: none; }
   .hero h1 { font-family: 'Syne', sans-serif; font-size: 1.7em; background: linear-gradient(135deg, #38bdf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
   .hero p { color: var(--muted); font-size: 0.82em; max-width: 500px; margin: 0 auto; }
@@ -33,25 +30,17 @@
   .section-wrap { margin: 16px 14px 0; }
   .section-label { font-size: 0.68em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
 
-  /* ANALOGY */
   .analogy { background: linear-gradient(135deg, #131326, #1a1a30); border: 1px solid #2e2e50; border-radius: 14px; padding: 14px 16px; }
   .analogy-tag { display: inline-block; background: #1e1e40; color: var(--bexp); font-size: 0.66em; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
   .analogy h3 { font-size: 0.88em; color: var(--text); margin-bottom: 6px; }
   .analogy p { font-size: 0.78em; color: #94a3b8; line-height: 1.6; }
   .analogy strong { color: var(--bexp); }
 
-  /* ===== FLOWCHART ===== */
+  /* FLOWCHART */
   .flowchart-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 10px 6px 6px; position: relative; }
   .flow-hint { font-size: 0.66em; color: var(--muted); text-align: center; margin-bottom: 6px; }
   #flow-svg { width: 100%; display: block; max-height: 280px; }
-
-  .flow-tooltip {
-    position: absolute; left: 50%; transform: translateX(-50%); top: 30%;
-    background: #1a1a38; border: 1.5px solid var(--bexp); border-radius: 12px;
-    padding: 12px 14px; font-size: 0.76em; width: 86%; max-width: 260px;
-    opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 20;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
-  }
+  .flow-tooltip { position: absolute; left: 50%; transform: translateX(-50%); top: 30%; background: #1a1a38; border: 1.5px solid var(--bexp); border-radius: 12px; padding: 12px 14px; font-size: 0.76em; width: 86%; max-width: 260px; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 20; box-shadow: 0 8px 32px rgba(0,0,0,0.7); }
   .flow-tooltip.visible { opacity: 1; pointer-events: all; }
   .tt-title { font-weight: 700; color: var(--bexp); margin-bottom: 5px; font-size: 0.95em; }
   .tt-body { color: #94a3b8; line-height: 1.5; }
@@ -133,16 +122,14 @@
   .summary li { font-size: 0.78em; color: #94a3b8; line-height: 1.6; padding: 3px 0; display: flex; gap: 7px; }
   .summary li::before { content: '✓'; color: var(--exp); font-weight: 700; flex-shrink: 0; }
 
-  /* ===== BLOCKCHAIN SECTION ===== */
+  /* BLOCKCHAIN */
   .blockchain { background: linear-gradient(135deg, #0a0a1f, #0d1220); border: 1px solid rgba(99,102,241,0.35); border-radius: 14px; padding: 14px 16px; }
   .bc-tag { display: inline-block; background: rgba(99,102,241,0.15); color: #818cf8; font-size: 0.66em; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
   .blockchain h3 { color: #818cf8; font-size: 0.88em; margin-bottom: 10px; }
-
   .bc-explainer { background: rgba(99,102,241,0.07); border: 1px solid rgba(99,102,241,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
   .bc-explainer h4 { color: #a5b4fc; font-size: 0.82em; margin-bottom: 7px; }
   .bc-explainer p { font-size: 0.76em; color: #94a3b8; line-height: 1.6; }
   .bc-explainer strong { color: var(--text); }
-
   .bc-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
   .bc-card { border-radius: 10px; padding: 11px 12px; font-size: 0.74em; }
   .bc-card.old { background: rgba(107,107,138,0.08); border: 1px solid rgba(107,107,138,0.2); }
@@ -154,22 +141,15 @@
   .bc-card li { color: #94a3b8; padding: 2px 0; line-height: 1.4; display: flex; gap: 6px; }
   .bc-card.old li::before { content: '⏳'; font-size: 0.85em; flex-shrink: 0; }
   .bc-card.new li::before { content: '⚡'; font-size: 0.85em; flex-shrink: 0; }
-
   .bc-steps { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
   .bc-step { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: 9px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
   .bc-step-num { background: #4f46e5; color: #fff; min-width: 22px; height: 22px; border-radius: 50%; font-size: 0.7em; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .bc-step-text { font-size: 0.76em; color: #94a3b8; line-height: 1.5; }
   .bc-step-text strong { color: var(--text); }
-
   .sc-box { background: rgba(34,211,165,0.06); border: 1px solid rgba(34,211,165,0.2); border-radius: 10px; padding: 12px 14px; }
   .sc-box h4 { color: var(--exp); font-size: 0.82em; margin-bottom: 8px; }
-  .sc-code { background: #0a0a0f; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-family: 'Courier New', monospace; font-size: 0.7em; color: #a3e635; line-height: 1.6; margin-bottom: 8px; overflow-x: auto; }
-  .sc-code .comment { color: #4a5568; }
-  .sc-code .keyword { color: #818cf8; }
-  .sc-code .string { color: var(--imp); }
   .sc-box p { font-size: 0.74em; color: #94a3b8; line-height: 1.55; }
   .sc-box strong { color: var(--text); }
-
   .bc-bottom { margin-top: 10px; background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2); border-radius: 9px; padding: 10px 12px; font-size: 0.75em; color: #94a3b8; line-height: 1.6; }
   .bc-bottom strong { color: var(--imp); }
 </style>
@@ -181,7 +161,6 @@
   <p>Wie funktioniert sicheres Zahlen beim internationalen Handel?</p>
 </div>
 
-<!-- ANALOGY -->
 <div class="section-wrap">
   <div class="analogy">
     <span class="analogy-tag">🎮 So stell dir's vor</span>
@@ -190,7 +169,6 @@
   </div>
 </div>
 
-<!-- FLOWCHART -->
 <div class="section-wrap">
   <div class="section-label">🖱️ Flussdiagramm – Pfeile antippen für Details</div>
   <div class="flowchart-wrap">
@@ -202,114 +180,26 @@
         <marker id="a-yellow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#f59e0b"/></marker>
         <marker id="a-indigo" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#6366f1"/></marker>
       </defs>
-
-      <!-- Exporteur top-left -->
-      <g class="flow-node" data-id="exporteur">
-        <rect x="6" y="10" width="90" height="48" rx="9" fill="#0d2a1e" stroke="#22d3a5" stroke-width="1.5"/>
-        <text x="51" y="29" text-anchor="middle" font-size="16">🏭</text>
-        <text x="51" y="43" text-anchor="middle" fill="#22d3a5" font-size="8" font-weight="700">EXPORTEUR</text>
-        <text x="51" y="52" text-anchor="middle" fill="#4a7a6a" font-size="6.5">Verkäufer</text>
-      </g>
-
-      <!-- Importeur top-right -->
-      <g class="flow-node" data-id="importeur">
-        <rect x="244" y="10" width="90" height="48" rx="9" fill="#2a1a0a" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="289" y="29" text-anchor="middle" font-size="16">🛍️</text>
-        <text x="289" y="43" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="700">IMPORTEUR</text>
-        <text x="289" y="52" text-anchor="middle" fill="#7a5a1a" font-size="6.5">Käufer</text>
-      </g>
-
-      <!-- Bank Exporteur bottom-left -->
-      <g class="flow-node" data-id="bank-exp">
-        <rect x="6" y="202" width="90" height="48" rx="9" fill="#0a1f2a" stroke="#38bdf8" stroke-width="1.5"/>
-        <text x="51" y="221" text-anchor="middle" font-size="16">🏦</text>
-        <text x="51" y="235" text-anchor="middle" fill="#38bdf8" font-size="7.5" font-weight="700">BANK EXP.</text>
-        <text x="51" y="244" text-anchor="middle" fill="#1a5a7a" font-size="6">zahlt aus</text>
-      </g>
-
-      <!-- Bank Importeur bottom-right -->
-      <g class="flow-node" data-id="bank-imp">
-        <rect x="244" y="202" width="90" height="48" rx="9" fill="#1a1030" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="289" y="221" text-anchor="middle" font-size="16">🏛️</text>
-        <text x="289" y="235" text-anchor="middle" fill="#a78bfa" font-size="7.5" font-weight="700">BANK IMP.</text>
-        <text x="289" y="244" text-anchor="middle" fill="#5a3a8a" font-size="6">garantiert</text>
-      </g>
-
-      <!-- Center label -->
+      <g class="flow-node" data-id="exporteur"><rect x="6" y="10" width="90" height="48" rx="9" fill="#0d2a1e" stroke="#22d3a5" stroke-width="1.5"/><text x="51" y="29" text-anchor="middle" font-size="16">🏭</text><text x="51" y="43" text-anchor="middle" fill="#22d3a5" font-size="8" font-weight="700">EXPORTEUR</text><text x="51" y="52" text-anchor="middle" fill="#4a7a6a" font-size="6.5">Verkäufer</text></g>
+      <g class="flow-node" data-id="importeur"><rect x="244" y="10" width="90" height="48" rx="9" fill="#2a1a0a" stroke="#f59e0b" stroke-width="1.5"/><text x="289" y="29" text-anchor="middle" font-size="16">🛍️</text><text x="289" y="43" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="700">IMPORTEUR</text><text x="289" y="52" text-anchor="middle" fill="#7a5a1a" font-size="6.5">Käufer</text></g>
+      <g class="flow-node" data-id="bank-exp"><rect x="6" y="202" width="90" height="48" rx="9" fill="#0a1f2a" stroke="#38bdf8" stroke-width="1.5"/><text x="51" y="221" text-anchor="middle" font-size="16">🏦</text><text x="51" y="235" text-anchor="middle" fill="#38bdf8" font-size="7.5" font-weight="700">BANK EXP.</text><text x="51" y="244" text-anchor="middle" fill="#1a5a7a" font-size="6">zahlt aus</text></g>
+      <g class="flow-node" data-id="bank-imp"><rect x="244" y="202" width="90" height="48" rx="9" fill="#1a1030" stroke="#a78bfa" stroke-width="1.5"/><text x="289" y="221" text-anchor="middle" font-size="16">🏛️</text><text x="289" y="235" text-anchor="middle" fill="#a78bfa" font-size="7.5" font-weight="700">BANK IMP.</text><text x="289" y="244" text-anchor="middle" fill="#5a3a8a" font-size="6">garantiert</text></g>
       <text x="170" y="122" text-anchor="middle" font-size="32" opacity="0.15">🔒</text>
       <text x="170" y="148" text-anchor="middle" fill="#2a2a55" font-size="8" font-weight="700">AKKREDITIV</text>
       <text x="170" y="160" text-anchor="middle" fill="#1e1e44" font-size="6.5">Bank garantiert Zahlung</text>
-
-      <!-- ① Vertrag top (dashed both ways) -->
-      <g class="flow-arrow-btn" data-id="s1">
-        <line x1="99" y1="30" x2="240" y2="30" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/>
-        <line x1="240" y1="36" x2="99" y2="36" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/>
-        <rect x="136" y="22" width="68" height="17" rx="5" fill="#16163a" stroke="#6366f1" stroke-width="0.8"/>
-        <text x="170" y="33" text-anchor="middle" fill="#818cf8" font-size="7.5" font-weight="700">① Vertrag</text>
-      </g>
-
-      <!-- ⑤ Ware arc above -->
-      <g class="flow-arrow-btn" data-id="s5">
-        <path d="M 100 16 Q 170 -2 240 16" stroke="#22d3a5" stroke-width="1.5" fill="none" marker-end="url(#a-green)"/>
-        <rect x="136" y="2" width="68" height="15" rx="5" fill="#0a2a1a" stroke="#22d3a5" stroke-width="0.8"/>
-        <text x="170" y="12" text-anchor="middle" fill="#22d3a5" font-size="7" font-weight="700">⑤ Ware 🚢</text>
-      </g>
-
-      <!-- ② Imp → Bank Imp right down -->
-      <g class="flow-arrow-btn" data-id="s2">
-        <line x1="289" y1="61" x2="289" y2="198" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#a-yellow)"/>
-        <rect x="296" y="116" width="40" height="30" rx="6" fill="#1a1200" stroke="#f59e0b" stroke-width="0.8"/>
-        <text x="316" y="128" text-anchor="middle" fill="#f59e0b" font-size="7.5" font-weight="700">②</text>
-        <text x="316" y="140" text-anchor="middle" fill="#8a6b30" font-size="6.5">Auftrag</text>
-      </g>
-
-      <!-- ③ Bank Imp → Bank Exp bottom left -->
-      <g class="flow-arrow-btn" data-id="s3">
-        <line x1="240" y1="228" x2="100" y2="228" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#a-purple)"/>
-        <rect x="134" y="218" width="72" height="16" rx="5" fill="#16102a" stroke="#a78bfa" stroke-width="0.8"/>
-        <text x="170" y="229" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="700">③ Benachrichtigung</text>
-      </g>
-
-      <!-- ④ Bank Exp → Exp left up -->
-      <g class="flow-arrow-btn" data-id="s4">
-        <line x1="51" y1="198" x2="51" y2="61" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a-blue)"/>
-        <rect x="2" y="116" width="40" height="30" rx="6" fill="#001a2a" stroke="#38bdf8" stroke-width="0.8"/>
-        <text x="22" y="128" text-anchor="middle" fill="#38bdf8" font-size="7.5" font-weight="700">④</text>
-        <text x="22" y="140" text-anchor="middle" fill="#1a5a6a" font-size="6.5">✅ Los!</text>
-      </g>
-
-      <!-- ⑥ Exp → Bank Exp diagonal dashed -->
-      <g class="flow-arrow-btn" data-id="s6">
-        <line x1="75" y1="58" x2="54" y2="198" stroke="#22d3a5" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-green)"/>
-        <rect x="78" y="148" width="52" height="26" rx="6" fill="#0a2a1a" stroke="#22d3a5" stroke-width="0.8"/>
-        <text x="104" y="160" text-anchor="middle" fill="#22d3a5" font-size="7" font-weight="700">⑥ Docs</text>
-        <text x="104" y="170" text-anchor="middle" fill="#22d3a5" font-size="6.5">→ 💰</text>
-      </g>
-
-      <!-- ⑦ Bank Exp → Bank Imp bottom right -->
-      <g class="flow-arrow-btn" data-id="s7">
-        <line x1="100" y1="238" x2="240" y2="238" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a-blue)"/>
-        <rect x="134" y="240" width="72" height="16" rx="5" fill="#001a2a" stroke="#38bdf8" stroke-width="0.8"/>
-        <text x="170" y="251" text-anchor="middle" fill="#38bdf8" font-size="7" font-weight="700">⑦ Docs + Geld</text>
-      </g>
-
-      <!-- ⑧ Bank Imp → Imp diagonal dashed -->
-      <g class="flow-arrow-btn" data-id="s8">
-        <line x1="265" y1="198" x2="286" y2="62" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-yellow)"/>
-        <rect x="210" y="148" width="52" height="26" rx="6" fill="#1a1200" stroke="#f59e0b" stroke-width="0.8"/>
-        <text x="236" y="160" text-anchor="middle" fill="#f59e0b" font-size="7" font-weight="700">⑧ Docs</text>
-        <text x="236" y="170" text-anchor="middle" fill="#f59e0b" font-size="6.5">→ 📦</text>
-      </g>
+      <g class="flow-arrow-btn" data-id="s1"><line x1="99" y1="30" x2="240" y2="30" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/><line x1="240" y1="36" x2="99" y2="36" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/><rect x="136" y="22" width="68" height="17" rx="5" fill="#16163a" stroke="#6366f1" stroke-width="0.8"/><text x="170" y="33" text-anchor="middle" fill="#818cf8" font-size="7.5" font-weight="700">① Vertrag</text></g>
+      <g class="flow-arrow-btn" data-id="s5"><path d="M 100 16 Q 170 -2 240 16" stroke="#22d3a5" stroke-width="1.5" fill="none" marker-end="url(#a-green)"/><rect x="136" y="2" width="68" height="15" rx="5" fill="#0a2a1a" stroke="#22d3a5" stroke-width="0.8"/><text x="170" y="12" text-anchor="middle" fill="#22d3a5" font-size="7" font-weight="700">⑤ Ware 🚢</text></g>
+      <g class="flow-arrow-btn" data-id="s2"><line x1="289" y1="61" x2="289" y2="198" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#a-yellow)"/><rect x="296" y="116" width="40" height="30" rx="6" fill="#1a1200" stroke="#f59e0b" stroke-width="0.8"/><text x="316" y="128" text-anchor="middle" fill="#f59e0b" font-size="7.5" font-weight="700">②</text><text x="316" y="140" text-anchor="middle" fill="#8a6b30" font-size="6.5">Auftrag</text></g>
+      <g class="flow-arrow-btn" data-id="s3"><line x1="240" y1="228" x2="100" y2="228" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#a-purple)"/><rect x="134" y="218" width="72" height="16" rx="5" fill="#16102a" stroke="#a78bfa" stroke-width="0.8"/><text x="170" y="229" text-anchor="middle" fill="#a78bfa" font-size="7" font-weight="700">③ Benachrichtigung</text></g>
+      <g class="flow-arrow-btn" data-id="s4"><line x1="51" y1="198" x2="51" y2="61" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a-blue)"/><rect x="2" y="116" width="40" height="30" rx="6" fill="#001a2a" stroke="#38bdf8" stroke-width="0.8"/><text x="22" y="128" text-anchor="middle" fill="#38bdf8" font-size="7.5" font-weight="700">④</text><text x="22" y="140" text-anchor="middle" fill="#1a5a6a" font-size="6.5">✅ Los!</text></g>
+      <g class="flow-arrow-btn" data-id="s6"><line x1="75" y1="58" x2="54" y2="198" stroke="#22d3a5" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-green)"/><rect x="78" y="148" width="52" height="26" rx="6" fill="#0a2a1a" stroke="#22d3a5" stroke-width="0.8"/><text x="104" y="160" text-anchor="middle" fill="#22d3a5" font-size="7" font-weight="700">⑥ Docs</text><text x="104" y="170" text-anchor="middle" fill="#22d3a5" font-size="6.5">→ 💰</text></g>
+      <g class="flow-arrow-btn" data-id="s7"><line x1="100" y1="238" x2="240" y2="238" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a-blue)"/><rect x="134" y="240" width="72" height="16" rx="5" fill="#001a2a" stroke="#38bdf8" stroke-width="0.8"/><text x="170" y="251" text-anchor="middle" fill="#38bdf8" font-size="7" font-weight="700">⑦ Docs + Geld</text></g>
+      <g class="flow-arrow-btn" data-id="s8"><line x1="265" y1="198" x2="286" y2="62" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-yellow)"/><rect x="210" y="148" width="52" height="26" rx="6" fill="#1a1200" stroke="#f59e0b" stroke-width="0.8"/><text x="236" y="160" text-anchor="middle" fill="#f59e0b" font-size="7" font-weight="700">⑧ Docs</text><text x="236" y="170" text-anchor="middle" fill="#f59e0b" font-size="6.5">→ 📦</text></g>
     </svg>
-    <div class="flow-tooltip" id="flow-tooltip">
-      <div class="tt-title" id="tt-title"></div>
-      <div class="tt-body" id="tt-body"></div>
-      <span class="tt-close" id="tt-close">✕ schließen</span>
-    </div>
+    <div class="flow-tooltip" id="flow-tooltip"><div class="tt-title" id="tt-title"></div><div class="tt-body" id="tt-body"></div><span class="tt-close" id="tt-close">✕ schließen</span></div>
   </div>
 </div>
 
-<!-- ACTORS -->
 <div class="section-wrap">
   <div class="section-label">🎭 Die 4 Hauptakteure</div>
   <div class="actors">
@@ -320,13 +210,11 @@
   </div>
 </div>
 
-<!-- 8 STEPS -->
 <div class="section-wrap">
   <div class="section-label">📋 Die 8 Schritte – Tippe zum Aufklappen</div>
   <div id="steps-list"></div>
 </div>
 
-<!-- ESELSBRÜCKE -->
 <div class="section-wrap">
   <div class="esel">
     <span class="esel-tag">🧠 Eselsbrücke</span>
@@ -344,7 +232,6 @@
   </div>
 </div>
 
-<!-- VERGLEICH -->
 <div class="section-wrap">
   <div class="vergleich">
     <h3>⚖️ Akkreditiv vs. Dokumenteninkasso</h3>
@@ -360,7 +247,6 @@
   </div>
 </div>
 
-<!-- SUMMARY -->
 <div class="section-wrap">
   <div class="summary">
     <h3>🏆 Warum ist das Akkreditiv so genial?</h3>
@@ -373,170 +259,74 @@
   </div>
 </div>
 
-<!-- BLOCKCHAIN SECTION -->
 <div class="section-wrap">
   <div class="section-label">🔮 Bonus: Die Zukunft des Akkreditivs</div>
   <div class="blockchain">
     <span class="bc-tag">⛓️ Blockchain & Smart Contracts</span>
     <h3>Wie würde ein Akkreditiv auf der Blockchain aussehen?</h3>
-
-    <!-- Was ist ein Smart Contract -->
     <div class="bc-explainer">
-      <h4>🤖 Was ist ein Smart Contract überhaupt?</h4>
-      <p>Stell dir vor, du hast eine <strong>Verkaufsautomat-Maschine</strong>: Du wirfst Geld ein, drückst den Knopf → die Maschine gibt dir automatisch das Produkt. Kein Mensch entscheidet, kein Vertrauen nötig – die <strong>Regeln sind im Code festgelegt</strong>.<br><br>
-      Genau so funktioniert ein Smart Contract. Es ist ein <strong>Computerprogramm auf der Blockchain</strong>, das automatisch ausführt was vereinbart wurde – sobald bestimmte Bedingungen erfüllt sind. Niemand kann es manipulieren, niemand kann es aufhalten.</p>
+      <h4>🤖 Was ist ein Smart Contract?</h4>
+      <p>Stell dir einen <strong>Verkaufsautomaten</strong> vor: Du wirfst Geld ein, drückst den Knopf → Produkt kommt raus. Automatisch, kein Mensch entscheidet, kein Vertrauen nötig. Ein Smart Contract ist genau das – ein <strong>Computerprogramm auf der Blockchain</strong> das automatisch ausführt was vereinbart wurde, sobald Bedingungen erfüllt sind. Niemand kann es manipulieren.</p>
     </div>
-
-    <!-- Alt vs Neu -->
     <div class="bc-compare">
-      <div class="bc-card old">
-        <div class="bc-card-title">😴 Klassisch heute</div>
-        <ul>
-          <li>Banken als Vermittler</li>
-          <li>5–10 Tage Bearbeitung</li>
-          <li>Hohe Bankgebühren</li>
-          <li>Papier-Dokumente</li>
-          <li>Fehler möglich</li>
-        </ul>
-      </div>
-      <div class="bc-card new">
-        <div class="bc-card-title">🚀 Blockchain-Version</div>
-        <ul>
-          <li>Smart Contract = Bank</li>
-          <li>Minuten statt Tage</li>
-          <li>Minimale Gebühren</li>
-          <li>Digitale Dokumente</li>
-          <li>Automatisch & sicher</li>
-        </ul>
-      </div>
+      <div class="bc-card old"><div class="bc-card-title">😴 Klassisch heute</div><ul><li>Banken als Vermittler</li><li>5–10 Tage Bearbeitung</li><li>Hohe Bankgebühren</li><li>Papier-Dokumente</li><li>Fehleranfällig</li></ul></div>
+      <div class="bc-card new"><div class="bc-card-title">🚀 Blockchain-Version</div><ul><li>Smart Contract = Bank</li><li>Minuten statt Tage</li><li>Minimale Gebühren</li><li>Digitale Dokumente</li><li>Automatisch & sicher</li></ul></div>
     </div>
-
-    <!-- Wie es funktioniert -->
     <div class="section-label" style="margin-bottom:8px;">So würde es ablaufen:</div>
     <div class="bc-steps">
-      <div class="bc-step">
-        <div class="bc-step-num">1</div>
-        <div class="bc-step-text"><strong>Smart Contract wird erstellt:</strong> Exporteur und Importeur einigen sich auf die Bedingungen. Ein Programmierer (oder eine Plattform) schreibt diese als Code auf die Blockchain. Bedingung: „Wenn Lieferdokument bestätigt → zahle automatisch."</div>
-      </div>
-      <div class="bc-step">
-        <div class="bc-step-num">2</div>
-        <div class="bc-step-text"><strong>Stablecoins werden eingesperrt:</strong> Der Importeur schickt z.B. 100.000 USDC (= Stablecoin, immer = 1 US-Dollar) in den Smart Contract. Das Geld ist eingesperrt – wie in einem digitalen Tresor. Keine Bank nötig!</div>
-      </div>
-      <div class="bc-step">
-        <div class="bc-step-num">3</div>
-        <div class="bc-step-text"><strong>Exporteur liefert & lädt Dokumente hoch:</strong> Frachtbrief, Rechnung etc. werden digital signiert und auf die Blockchain hochgeladen (z.B. über ein „Oracle" – ein System das echte Weltdaten in die Blockchain bringt).</div>
-      </div>
-      <div class="bc-step">
-        <div class="bc-step-num">4</div>
-        <div class="bc-step-text"><strong>Smart Contract prüft automatisch:</strong> Sobald alle Dokumente bestätigt sind, führt der Smart Contract automatisch aus: → Die 100.000 USDC werden sofort an den Exporteur überwiesen. Keine Bank, kein Mensch, kein Warten!</div>
-      </div>
-      <div class="bc-step">
-        <div class="bc-step-num">5</div>
-        <div class="bc-step-text"><strong>Importeur erhält digitale Docs:</strong> Er bekommt die digitalen Dokumente automatisch und kann damit die Ware abholen. Alles transparent auf der Blockchain gespeichert – für immer nachvollziehbar.</div>
-      </div>
+      <div class="bc-step"><div class="bc-step-num">1</div><div class="bc-step-text"><strong>Smart Contract wird erstellt:</strong> Beide einigen sich auf Bedingungen. Importeur legt Stablecoins (z.B. USDC = immer 1 US-Dollar) in den Smart Contract – wie ein digitaler Tresor.</div></div>
+      <div class="bc-step"><div class="bc-step-num">2</div><div class="bc-step-text"><strong>Exporteur liefert & lädt Dokumente hoch:</strong> Frachtbrief etc. werden digital signiert und unveränderbar auf der Blockchain gespeichert.</div></div>
+      <div class="bc-step"><div class="bc-step-num">3</div><div class="bc-step-text"><strong>Oracle bestätigt Lieferung:</strong> Ein „Oracle" (System das echte Weltdaten in die Blockchain bringt) bestätigt: „Ware wurde abgeschickt." Der Smart Contract prüft automatisch.</div></div>
+      <div class="bc-step"><div class="bc-step-num">4</div><div class="bc-step-text"><strong>Automatische Zahlung:</strong> Alle Bedingungen erfüllt → Smart Contract überweist USDC sofort an den Exporteur. Keine Bank, kein Mensch, kein Warten!</div></div>
+      <div class="bc-step"><div class="bc-step-num">5</div><div class="bc-step-text"><strong>Importeur erhält digitale Docs:</strong> Bekommt die Dokumente automatisch und kann die Ware abholen. Alles transparent auf der Blockchain für immer nachvollziehbar.</div></div>
     </div>
-
-    <!-- Was sind Stablecoins -->
     <div class="sc-box">
       <h4>💵 Was sind Stablecoins?</h4>
-      <p>Normale Kryptowährungen wie Bitcoin schwanken stark im Preis – heute 50.000€, morgen 30.000€. Das ist schlecht für Zahlungen.<br><br>
-      <strong>Stablecoins lösen das:</strong> Sie sind Kryptowährungen, die immer <strong>1:1 an den Dollar oder Euro gekoppelt</strong> sind. 1 USDC = immer 1 US-Dollar. Man bekommt die Vorteile der Blockchain (schnell, günstig, global) ohne das Preisschwankungs-Risiko.<br><br>
-      Bekannte Stablecoins: <strong>USDC</strong> (USD Coin), <strong>USDT</strong> (Tether), <strong>EURC</strong> (Euro Coin).</p>
+      <p>Bitcoin schwankt stark – heute 50.000€, morgen 30.000€. Schlecht für Zahlungen. <strong>Stablecoins</strong> sind Kryptowährungen die immer <strong>1:1 an Dollar oder Euro gekoppelt</strong> sind. 1 USDC = immer 1 US-Dollar. Man bekommt die Vorteile der Blockchain (schnell, günstig, global) ohne das Preisschwankungs-Risiko. Bekannte Stablecoins: <strong>USDC, USDT, EURC</strong>.</p>
     </div>
-
-    <div class="bc-bottom">
-      🎯 <strong>Fazit:</strong> Ein Blockchain-Akkreditiv macht dasselbe wie ein klassisches Akkreditiv – aber <strong>ohne Banken als Vermittler</strong>, in Minuten statt Tagen, für einen Bruchteil der Kosten. Der Smart Contract ist sozusagen der <strong>unbestechliche Roboter-Notar</strong>, der automatisch ausführt was vereinbart wurde. Das ist die Zukunft des internationalen Handels!
-    </div>
+    <div class="bc-bottom">🎯 <strong>Fazit:</strong> Ein Blockchain-Akkreditiv macht dasselbe – aber <strong>ohne Banken als Vermittler</strong>, in Minuten statt Tagen, für einen Bruchteil der Kosten. Der Smart Contract ist der <strong>unbestechliche Roboter-Notar</strong>. Das ist die Zukunft des internationalen Handels!</div>
   </div>
 </div>
 
 <script>
 const tooltips = {
-  exporteur: { title: '🏭 Exporteur (Verkäufer)', body: 'Produziert und verkauft die Ware ins Ausland. Liefert erst NACH Eröffnung des Akkreditivs – damit er sicher ist, dass er bezahlt wird.' },
-  importeur: { title: '🛍️ Importeur (Käufer)', body: 'Bestellt die Ware aus dem Ausland. Beauftragt seine Bank das Akkreditiv zu eröffnen. Bezahlt erst wenn die Bank die Dokumente erhält.' },
-  'bank-exp': { title: '🏦 Bank des Exporteurs', body: 'Informiert den Exporteur über das Akkreditiv, prüft die Lieferdokumente und zahlt ihn sofort aus wenn alles stimmt. Dann holt sie sich das Geld von der Bank des Importeurs zurück.' },
-  'bank-imp': { title: '🏛️ Bank des Importeurs (Eröffnende Bank)', body: 'DAS ist der Kern: Diese Bank garantiert die Zahlung im Namen des Käufers. Ohne diese Garantie wäre es nur ein Dokumenteninkasso!' },
-  s1: { title: '① Kaufvertrag', body: 'Exporteur und Importeur einigen sich: Zahlung läuft über Akkreditiv. Beide wollen Sicherheit – deshalb diese Methode.' },
-  s2: { title: '② Akkreditiv eröffnen', body: 'Importeur geht zu seiner Bank: „Eröffne ein Akkreditiv!" Die Bank verpflichtet sich zur Zahlung – aber NUR wenn die Lieferdokumente korrekt vorgelegt werden.' },
-  s3: { title: '③ Banken kommunizieren', body: 'Bank des Importeurs informiert Bank des Exporteurs: „Akkreditiv ist da, euer Kunde kann liefern!" – Jetzt hat der Exporteur seine Sicherheit.' },
-  s4: { title: '④ Grünes Licht!', body: 'Bank des Exporteurs sagt dem Verkäufer: „Du kannst jetzt liefern!" Erst JETZT verschickt der Exporteur die Ware.' },
-  s5: { title: '⑤ Ware wird versandt 🚢', body: 'Exporteur schickt die Waren ab und erhält Transportdokumente: Frachtbrief, Rechnung, Ursprungszeugnis – das sind seine Beweise.' },
-  s6: { title: '⑥ Dokumente → Geld 💰', body: 'Exporteur gibt alle Lieferdokumente seiner Bank. Bank prüft → wenn OK, zahlt sie sofort! Der Verkäufer hat sein Geld.' },
-  s7: { title: '⑦ Docs & Geld zwischen Banken', body: 'Bank des Exporteurs schickt Dokumente an Bank des Importeurs und bekommt den Betrag erstattet.' },
-  s8: { title: '⑧ Importeur holt Ware ab 📦', body: 'Bank des Importeurs belastet Konto des Käufers und gibt ihm die Dokumente. Mit den Docs holt er die Ware ab. Fertig! 🎉' },
+  exporteur:{title:'🏭 Exporteur (Verkäufer)',body:'Produziert und verkauft die Ware ins Ausland. Liefert erst NACH Eröffnung des Akkreditivs – damit er sicher ist, dass er bezahlt wird.'},
+  importeur:{title:'🛍️ Importeur (Käufer)',body:'Bestellt die Ware aus dem Ausland. Beauftragt seine Bank das Akkreditiv zu eröffnen. Bezahlt erst wenn seine Bank die Dokumente erhält.'},
+  'bank-exp':{title:'🏦 Bank des Exporteurs',body:'Informiert den Exporteur über das Akkreditiv, prüft die Lieferdokumente und zahlt ihn sofort aus wenn alles stimmt. Holt sich das Geld dann von der Bank des Importeurs zurück.'},
+  'bank-imp':{title:'🏛️ Bank des Importeurs',body:'DAS ist der Kern: Diese Bank garantiert die Zahlung im Namen des Käufers. Ohne diese Garantie wäre es nur ein Dokumenteninkasso!'},
+  s1:{title:'① Kaufvertrag',body:'Exporteur und Importeur einigen sich: Zahlung läuft über Akkreditiv. Beide wollen Sicherheit.'},
+  s2:{title:'② Akkreditiv eröffnen',body:'Importeur geht zu seiner Bank: „Eröffne ein Akkreditiv!" Die Bank verpflichtet sich zur Zahlung – aber NUR wenn die Lieferdokumente korrekt vorgelegt werden.'},
+  s3:{title:'③ Banken kommunizieren',body:'Bank des Importeurs informiert Bank des Exporteurs: „Akkreditiv ist da, euer Kunde kann liefern!" Jetzt hat der Exporteur seine Sicherheit.'},
+  s4:{title:'④ Grünes Licht!',body:'Bank des Exporteurs sagt dem Verkäufer: „Du kannst jetzt liefern!" Erst JETZT verschickt der Exporteur die Ware.'},
+  s5:{title:'⑤ Ware wird versandt 🚢',body:'Exporteur schickt die Waren ab und erhält Transportdokumente: Frachtbrief, Rechnung, Ursprungszeugnis – das sind seine Beweise.'},
+  s6:{title:'⑥ Dokumente → Geld 💰',body:'Exporteur gibt alle Lieferdokumente seiner Bank. Bank prüft → wenn OK, zahlt sie sofort! Der Verkäufer hat sein Geld.'},
+  s7:{title:'⑦ Docs & Geld zwischen Banken',body:'Bank des Exporteurs schickt Dokumente an Bank des Importeurs und bekommt den Betrag erstattet.'},
+  s8:{title:'⑧ Importeur holt Ware ab 📦',body:'Bank des Importeurs belastet Konto des Käufers und gibt ihm die Dokumente. Mit den Docs holt er die Ware ab. Fertig! 🎉'},
 };
+const tooltip=document.getElementById('flow-tooltip');
+const ttTitle=document.getElementById('tt-title');
+const ttBody=document.getElementById('tt-body');
+function showTooltip(id){const d=tooltips[id];if(!d)return;ttTitle.textContent=d.title;ttBody.textContent=d.body;tooltip.classList.add('visible');}
+document.getElementById('tt-close').addEventListener('click',()=>tooltip.classList.remove('visible'));
+document.querySelectorAll('.flow-arrow-btn,.flow-node').forEach(el=>{el.addEventListener('click',e=>{e.stopPropagation();showTooltip(el.dataset.id);});});
+document.getElementById('flow-svg').addEventListener('click',()=>tooltip.classList.remove('visible'));
 
-const tooltip = document.getElementById('flow-tooltip');
-const ttTitle = document.getElementById('tt-title');
-const ttBody = document.getElementById('tt-body');
-
-function showTooltip(id) {
-  const data = tooltips[id];
-  if (!data) return;
-  ttTitle.textContent = data.title;
-  ttBody.textContent = data.body;
-  tooltip.classList.add('visible');
-}
-
-document.getElementById('tt-close').addEventListener('click', () => tooltip.classList.remove('visible'));
-document.querySelectorAll('.flow-arrow-btn, .flow-node').forEach(el => {
-  el.addEventListener('click', e => { e.stopPropagation(); showTooltip(el.dataset.id); });
-});
-document.getElementById('flow-svg').addEventListener('click', () => tooltip.classList.remove('visible'));
-
-const steps = [
-  { cls:'s1', badge:'1', short:'Kaufvertrag: Zahlung per Akkreditiv', who:'🤝 Exporteur + Importeur', emoji:'📝',
-    explain:`<strong>Was passiert?</strong> Exporteur und Importeur einigen sich: Zahlung läuft über Akkreditiv.<br><br><strong>Warum?</strong> Beide wollen sich absichern. Der Verkäufer will sicher bezahlt werden, der Käufer will die Ware bekommen.`,
-    flow:['🏭 Exporteur','→','📋 Vertrag','←','🛍️ Importeur'] },
-  { cls:'s2', badge:'2', short:'Importeur beauftragt seine Hausbank', who:'🛍️ Importeur → 🏛️ Bank des Importeurs', emoji:'🏦',
-    explain:`<strong>Was passiert?</strong> Der Käufer geht zu seiner Bank: „Eröffne ein Akkreditiv!"<br><br><strong>Was bedeutet das?</strong> Die Bank verpflichtet sich zur Zahlung – aber nur wenn der Exporteur beweist, dass er geliefert hat.`,
-    flow:['🛍️ Importeur','→','Auftrag','→','🏛️ Bank Imp.'] },
-  { cls:'s3', badge:'3', short:'Bank des Importeurs informiert Bank des Exporteurs', who:'🏛️ Bank des Importeurs → 🏦 Bank des Exporteurs', emoji:'📨',
-    explain:`<strong>Was passiert?</strong> Bank des Käufers an Bank des Verkäufers: „Das Akkreditiv ist eröffnet, euer Kunde kann liefern."<br><br>Das gibt dem Exporteur die Sicherheit, die er braucht.`,
-    flow:['🏛️ Bank Imp.','→','Nachricht','→','🏦 Bank Exp.'] },
-  { cls:'s4', badge:'4', short:'Exporteur erhält grünes Licht', who:'🏦 Bank des Exporteurs → 🏭 Exporteur', emoji:'✅',
-    explain:`<strong>Was passiert?</strong> Bank des Exporteurs: „Du kannst jetzt liefern – das Akkreditiv ist da!"<br><br><strong>Erst jetzt</strong> liefert der Exporteur. Vorher wäre das Risiko zu groß.`,
-    flow:['🏦 Bank Exp.','→','OK-Signal','→','🏭 Exporteur'] },
-  { cls:'s5', badge:'5', short:'Exporteur versendet die Güter', who:'🏭 Exporteur → 🚢 Transport', emoji:'🚢',
-    explain:`<strong>Was passiert?</strong> Der Exporteur versendet die Waren und erhält Transportdokumente:<br>• Frachtbrief / Bill of Lading 🗒️<br>• Handelsrechnung 🧾<br>• Ursprungszeugnis 🌍<br><br>Diese Dokumente sind der <strong>Beweis</strong> der Lieferung.`,
-    flow:['🏭 Exporteur','→','📦 Ware','→','🌍 Unterwegs'] },
-  { cls:'s6', badge:'6', short:'Exporteur übergibt Dokumente an seine Bank', who:'🏭 Exporteur → 🏦 Bank des Exporteurs', emoji:'📂',
-    explain:`<strong>Was passiert?</strong> Exporteur gibt alle Lieferdokumente seiner Bank. Bank prüft: Stimmt alles?<br><br><strong>Wenn ja:</strong> Bank zahlt dem Exporteur sofort den Rechnungsbetrag. 💰`,
-    flow:['🏭 Exporteur','→','📂 Dokumente','→','🏦 Bank Exp.','→','💰 Zahlung'] },
-  { cls:'s7', badge:'7', short:'Bank des Exporteurs schickt Dokumente weiter', who:'🏦 Bank des Exporteurs → 🏛️ Bank des Importeurs', emoji:'🔄',
-    explain:`<strong>Was passiert?</strong> Bank des Exporteurs leitet Dokumente an Bank des Importeurs weiter und bekommt den Betrag erstattet.<br><br>Das Geld wandert sicher durch das Bankensystem.`,
-    flow:['🏦 Bank Exp.','→','📂 Docs','→','🏛️ Bank Imp.','→','💰 Erstattung'] },
-  { cls:'s8', badge:'8', short:'Importeur bezahlt und erhält seine Ware', who:'🏛️ Bank des Importeurs → 🛍️ Importeur', emoji:'🎉',
-    explain:`<strong>Was passiert?</strong> Bank belastet Konto des Käufers und gibt ihm die Dokumente.<br><br>Mit diesen Dokumenten holt der Importeur die Ware ab. 🎉 Fertig!`,
-    flow:['🏛️ Bank Imp.','→','📂 Docs','→','🛍️ Importeur','→','📦 Ware abholen'] },
+const steps=[
+  {cls:'s1',badge:'1',short:'Kaufvertrag: Zahlung per Akkreditiv',who:'🤝 Exporteur + Importeur',emoji:'📝',explain:`<strong>Was passiert?</strong> Exporteur und Importeur einigen sich: Zahlung läuft über Akkreditiv.<br><br><strong>Warum?</strong> Beide wollen sich absichern. Der Verkäufer will sicher bezahlt werden, der Käufer will die Ware bekommen.`,flow:['🏭 Exporteur','→','📋 Vertrag','←','🛍️ Importeur']},
+  {cls:'s2',badge:'2',short:'Importeur beauftragt seine Hausbank',who:'🛍️ Importeur → 🏛️ Bank des Importeurs',emoji:'🏦',explain:`<strong>Was passiert?</strong> Der Käufer geht zu seiner Bank: „Eröffne ein Akkreditiv!"<br><br><strong>Was bedeutet das?</strong> Die Bank verpflichtet sich zur Zahlung – aber nur wenn der Exporteur beweist, dass er geliefert hat.`,flow:['🛍️ Importeur','→','Auftrag','→','🏛️ Bank Imp.']},
+  {cls:'s3',badge:'3',short:'Bank des Importeurs informiert Bank des Exporteurs',who:'🏛️ Bank des Importeurs → 🏦 Bank des Exporteurs',emoji:'📨',explain:`<strong>Was passiert?</strong> Bank des Käufers an Bank des Verkäufers: „Das Akkreditiv ist eröffnet, euer Kunde kann liefern."<br><br>Das gibt dem Exporteur die Sicherheit, die er braucht.`,flow:['🏛️ Bank Imp.','→','Nachricht','→','🏦 Bank Exp.']},
+  {cls:'s4',badge:'4',short:'Exporteur erhält grünes Licht',who:'🏦 Bank des Exporteurs → 🏭 Exporteur',emoji:'✅',explain:`<strong>Was passiert?</strong> Bank des Exporteurs: „Du kannst jetzt liefern – das Akkreditiv ist da!"<br><br><strong>Erst jetzt</strong> liefert der Exporteur. Vorher wäre das Risiko zu groß.`,flow:['🏦 Bank Exp.','→','OK-Signal','→','🏭 Exporteur']},
+  {cls:'s5',badge:'5',short:'Exporteur versendet die Güter',who:'🏭 Exporteur → 🚢 Transport',emoji:'🚢',explain:`<strong>Was passiert?</strong> Der Exporteur versendet die Waren und erhält Transportdokumente:<br>• Frachtbrief / Bill of Lading 🗒️<br>• Handelsrechnung 🧾<br>• Ursprungszeugnis 🌍<br><br>Diese Dokumente sind der <strong>Beweis</strong> der Lieferung.`,flow:['🏭 Exporteur','→','📦 Ware','→','🌍 Unterwegs']},
+  {cls:'s6',badge:'6',short:'Exporteur übergibt Dokumente an seine Bank',who:'🏭 Exporteur → 🏦 Bank des Exporteurs',emoji:'📂',explain:`<strong>Was passiert?</strong> Exporteur gibt alle Lieferdokumente seiner Bank. Bank prüft: Stimmt alles?<br><br><strong>Wenn ja:</strong> Bank zahlt dem Exporteur sofort den Rechnungsbetrag. 💰`,flow:['🏭 Exporteur','→','📂 Dokumente','→','🏦 Bank Exp.','→','💰 Zahlung']},
+  {cls:'s7',badge:'7',short:'Bank des Exporteurs schickt Dokumente weiter',who:'🏦 Bank des Exporteurs → 🏛️ Bank des Importeurs',emoji:'🔄',explain:`<strong>Was passiert?</strong> Bank des Exporteurs leitet Dokumente an Bank des Importeurs weiter und bekommt den Betrag erstattet.<br><br>Das Geld wandert sicher durch das Bankensystem.`,flow:['🏦 Bank Exp.','→','📂 Docs','→','🏛️ Bank Imp.','→','💰 Erstattung']},
+  {cls:'s8',badge:'8',short:'Importeur bezahlt und erhält seine Ware',who:'🏛️ Bank des Importeurs → 🛍️ Importeur',emoji:'🎉',explain:`<strong>Was passiert?</strong> Bank belastet Konto des Käufers und gibt ihm die Dokumente.<br><br>Mit diesen Dokumenten holt der Importeur die Ware ab. 🎉 Fertig!`,flow:['🏛️ Bank Imp.','→','📂 Docs','→','🛍️ Importeur','→','📦 Ware abholen']},
 ];
-
-const list = document.getElementById('steps-list');
-steps.forEach(s => {
-  const div = document.createElement('div');
-  div.className = `step ${s.cls}`;
-  div.innerHTML = `
-    <div class="step-header">
-      <div class="step-badge">${s.badge}</div>
-      <div class="step-header-text">
-        <div class="step-short">${s.short}</div>
-        <div class="step-who">${s.who}</div>
-      </div>
-      <div class="step-chevron">▼</div>
-    </div>
-    <div class="step-body">
-      <span class="step-emoji-big">${s.emoji}</span>
-      <div class="step-explain">${s.explain}</div>
-      <div class="step-flow">
-        ${s.flow.map(f=>f==='→'?`<span class="flow-arr-txt">→</span>`:`<span class="flow-pill">${f}</span>`).join('')}
-      </div>
-    </div>
-  `;
-  div.querySelector('.step-header').addEventListener('click', () => {
-    const isOpen = div.classList.contains('open');
-    document.querySelectorAll('.step').forEach(el => el.classList.remove('open'));
-    if (!isOpen) div.classList.add('open');
-  });
+const list=document.getElementById('steps-list');
+steps.forEach(s=>{
+  const div=document.createElement('div');
+  div.className=`step ${s.cls}`;
+  div.innerHTML=`<div class="step-header"><div class="step-badge">${s.badge}</div><div class="step-header-text"><div class="step-short">${s.short}</div><div class="step-who">${s.who}</div></div><div class="step-chevron">▼</div></div><div class="step-body"><span class="step-emoji-big">${s.emoji}</span><div class="step-explain">${s.explain}</div><div class="step-flow">${s.flow.map(f=>f==='→'?`<span class="flow-arr-txt">→</span>`:`<span class="flow-pill">${f}</span>`).join('')}</div></div>`;
+  div.querySelector('.step-header').addEventListener('click',()=>{const o=div.classList.contains('open');document.querySelectorAll('.step').forEach(el=>el.classList.remove('open'));if(!o)div.classList.add('open');});
   list.appendChild(div);
 });
 </script>
