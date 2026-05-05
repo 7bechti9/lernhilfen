@@ -8,288 +8,204 @@
 <style>
   :root {
     --bg: #0a0f09;
-    --surface: #131a12;
-    --surface2: #1a221a;
-    --border: #2a3a29;
+    --surface: #121a11;
+    --surface2: #182016;
+    --border: #243022;
     --text: #e8f0e6;
     --muted: #6b8a69;
     --exp: #4ade80;
     --imp: #fb923c;
     --bexp: #a3e635;
     --bimp: #facc15;
-    --accent: #4ade80;
+    --indigo: #818cf8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Space Grotesk', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0 0 60px 0;
-  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 0 60px 0; }
 
   .hero {
     background: linear-gradient(135deg, #0a0f09 0%, #0f1f0e 50%, #0a0f09 100%);
-    padding: 38px 20px 28px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    padding: 30px 20px 22px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
   }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%;
-    transform: translateX(-50%);
-    width: 400px; height: 200px;
-    background: radial-gradient(ellipse, rgba(74,222,128,0.10) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .compare-badge {
-    display: inline-block;
-    background: #1a2e18;
-    border: 1px solid rgba(74,222,128,0.3);
-    color: var(--exp);
-    font-size: 0.7em;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 2em;
-    background: linear-gradient(135deg, #4ade80, #facc15);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
-  .hero p { color: var(--muted); font-size: 0.88em; max-width: 500px; margin: 0 auto; }
+  .hero::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 200px; background: radial-gradient(ellipse, rgba(74,222,128,0.10) 0%, transparent 70%); pointer-events: none; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: 1.7em; background: linear-gradient(135deg, #4ade80, #facc15); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+  .hero p { color: var(--muted); font-size: 0.82em; max-width: 500px; margin: 0 auto; }
 
-  /* COMPARISON BOX */
-  .compare-box {
-    margin: 20px 16px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .compare-card {
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 14px;
-    border: 1px solid var(--border);
-  }
-  .compare-card.akk { border-color: rgba(56,189,248,0.25); }
-  .compare-card.ink { border-color: rgba(74,222,128,0.25); }
-  .compare-card .ctag {
-    font-size: 0.65em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
-  }
-  .compare-card.akk .ctag { color: #38bdf8; }
-  .compare-card.ink .ctag { color: var(--exp); }
-  .compare-card h4 { font-size: 0.82em; margin-bottom: 6px; }
-  .compare-card p { font-size: 0.72em; color: var(--muted); line-height: 1.5; }
-  .compare-card .verdict {
-    margin-top: 8px;
-    font-size: 0.7em;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 6px;
-    display: inline-block;
-  }
-  .compare-card.akk .verdict { background: rgba(56,189,248,0.12); color: #38bdf8; }
-  .compare-card.ink .verdict { background: rgba(74,222,128,0.12); color: var(--exp); }
+  .section-wrap { margin: 16px 14px 0; }
+  .section-label { font-size: 0.68em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
 
   /* ANALOGY */
-  .analogy {
-    margin: 16px 16px 0;
-    background: linear-gradient(135deg, #101e0f, #162314);
-    border: 1px solid rgba(74,222,128,0.2);
-    border-radius: 16px;
-    padding: 16px 18px;
-  }
-  .analogy-tag {
-    display: inline-block;
-    background: #1a2e18;
-    color: var(--exp);
-    font-size: 0.7em;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .analogy p { font-size: 0.82em; color: #94b892; line-height: 1.65; }
+  .analogy { background: linear-gradient(135deg, #101e0f, #162314); border: 1px solid rgba(74,222,128,0.2); border-radius: 14px; padding: 14px 16px; }
+  .analogy-tag { display: inline-block; background: rgba(74,222,128,0.12); color: var(--exp); font-size: 0.66em; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .analogy h3 { font-size: 0.88em; color: var(--text); margin-bottom: 6px; }
+  .analogy p { font-size: 0.78em; color: #94b892; line-height: 1.6; }
   .analogy strong { color: var(--exp); }
 
-  /* RISK METER */
-  .risk-section { margin: 16px 16px 0; }
-  .risk-label { font-size: 0.7em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
-  .risk-bar-wrap { background: var(--surface); border-radius: 12px; padding: 14px 16px; border: 1px solid var(--border); }
-  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  /* RISK BAR */
+  .risk-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; }
+  .risk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .risk-row:last-child { margin-bottom: 0; }
-  .risk-name { font-size: 0.75em; font-weight: 600; min-width: 80px; }
-  .risk-bar-outer { flex: 1; height: 8px; background: #1e2e1c; border-radius: 4px; overflow: hidden; }
-  .risk-bar-inner { height: 100%; border-radius: 4px; transition: width 1s ease; }
-  .risk-note { font-size: 0.68em; color: var(--muted); min-width: 70px; text-align: right; }
+  .risk-name { font-size: 0.72em; font-weight: 600; min-width: 78px; }
+  .risk-bar-outer { flex: 1; height: 7px; background: #1a2a18; border-radius: 4px; overflow: hidden; }
+  .risk-bar-inner { height: 100%; border-radius: 4px; }
+  .risk-note { font-size: 0.66em; color: var(--muted); min-width: 62px; text-align: right; }
+
+  /* FLOWCHART */
+  .flowchart-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 10px 6px 6px; position: relative; }
+  .flow-hint { font-size: 0.66em; color: var(--muted); text-align: center; margin-bottom: 6px; }
+  #flow-svg { width: 100%; display: block; max-height: 280px; }
+
+  .flow-tooltip {
+    position: absolute; left: 50%; transform: translateX(-50%); top: 30%;
+    background: #121e10; border: 1.5px solid var(--exp); border-radius: 12px;
+    padding: 12px 14px; font-size: 0.76em; width: 86%; max-width: 260px;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 20;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  }
+  .flow-tooltip.visible { opacity: 1; pointer-events: all; }
+  .tt-title { font-weight: 700; color: var(--exp); margin-bottom: 5px; font-size: 0.95em; }
+  .tt-body { color: #94b892; line-height: 1.5; }
+  .tt-close { display: block; text-align: right; color: var(--muted); font-size: 0.82em; margin-top: 8px; cursor: pointer; }
+  .flow-arrow-btn, .flow-node { cursor: pointer; }
 
   /* ACTORS */
-  .actors-section { padding: 20px 16px 0; }
-  .section-title { font-size: 0.72em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-  .actors {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .actor {
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 13px 12px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .actor-icon { font-size: 1.7em; flex-shrink: 0; }
-  .actor-name { font-size: 0.78em; font-weight: 700; margin-bottom: 2px; }
-  .actor-desc { font-size: 0.67em; color: var(--muted); line-height: 1.3; }
-  .actor.exp { border-color: rgba(74,222,128,0.3); }
-  .actor.exp .actor-name { color: var(--exp); }
-  .actor.imp { border-color: rgba(251,146,60,0.3); }
-  .actor.imp .actor-name { color: var(--imp); }
-  .actor.bexp { border-color: rgba(163,230,53,0.3); }
-  .actor.bexp .actor-name { color: var(--bexp); }
-  .actor.bimp { border-color: rgba(250,204,21,0.3); }
-  .actor.bimp .actor-name { color: var(--bimp); }
+  .actors { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .actor { background: var(--surface); border-radius: 12px; padding: 11px 10px; border: 1px solid var(--border); display: flex; align-items: center; gap: 9px; }
+  .actor-icon { font-size: 1.5em; flex-shrink: 0; }
+  .actor-name { font-size: 0.75em; font-weight: 700; margin-bottom: 1px; }
+  .actor-desc { font-size: 0.64em; color: var(--muted); line-height: 1.3; }
+  .actor.exp { border-color: rgba(74,222,128,0.3); } .actor.exp .actor-name { color: var(--exp); }
+  .actor.imp { border-color: rgba(251,146,60,0.3); } .actor.imp .actor-name { color: var(--imp); }
+  .actor.bexp { border-color: rgba(163,230,53,0.3); } .actor.bexp .actor-name { color: var(--bexp); }
+  .actor.bimp { border-color: rgba(250,204,21,0.3); } .actor.bimp .actor-name { color: var(--bimp); }
 
   /* STEPS */
-  .steps-section { padding: 20px 16px 0; }
-  .step {
-    background: var(--surface);
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    margin-bottom: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.25s, box-shadow 0.25s;
-  }
-  .step:hover { border-color: rgba(74,222,128,0.35); }
-  .step.open { border-color: rgba(74,222,128,0.5); box-shadow: 0 0 20px rgba(74,222,128,0.05); }
-
-  .step-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 16px;
-  }
-  .step-badge {
-    min-width: 28px; height: 28px;
-    border-radius: 50%;
-    font-size: 0.8em;
-    font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .step { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+  .step:hover { border-color: rgba(74,222,128,0.4); }
+  .step.open { border-color: rgba(74,222,128,0.55); box-shadow: 0 0 16px rgba(74,222,128,0.05); }
+  .step-header { display: flex; align-items: center; gap: 10px; padding: 11px 14px; }
+  .step-badge { min-width: 26px; height: 26px; border-radius: 50%; font-size: 0.75em; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .step-header-text { flex: 1; }
-  .step-short { font-size: 0.87em; font-weight: 600; color: var(--text); }
-  .step-who { font-size: 0.7em; margin-top: 2px; }
-  .step-chevron { color: var(--muted); transition: transform 0.3s; font-size: 0.85em; flex-shrink: 0; }
+  .step-short { font-size: 0.84em; font-weight: 600; color: var(--text); }
+  .step-who { font-size: 0.67em; margin-top: 2px; }
+  .step-chevron { color: var(--muted); transition: transform 0.3s; font-size: 0.8em; flex-shrink: 0; }
   .step.open .step-chevron { transform: rotate(180deg); }
-
-  .step-body {
-    display: none;
-    padding: 0 16px 16px;
-    border-top: 1px solid var(--border);
-  }
+  .step-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
   .step.open .step-body { display: block; }
-  .step-emoji-big { font-size: 2em; margin: 12px 0 8px; display: block; }
-  .step-explain { font-size: 0.81em; color: #94b892; line-height: 1.7; }
+  .step-emoji-big { font-size: 1.7em; margin: 10px 0 6px; display: block; }
+  .step-explain { font-size: 0.79em; color: #94b892; line-height: 1.65; }
   .step-explain strong { color: var(--text); }
-  .step-flow {
-    margin-top: 12px;
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-size: 0.73em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .flow-pill { padding: 3px 10px; border-radius: 20px; font-weight: 700; }
-  .flow-arr { color: #3a5238; }
+  .step-flow { margin-top: 10px; background: var(--surface2); border-radius: 8px; padding: 8px 12px; font-size: 0.7em; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .flow-pill { padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+  .flow-arr-txt { color: #3a5238; }
 
-  /* step colors */
-  .s1 .step-badge { background: #6366f1; color: #fff; }
-  .s1 .step-who { color: #818cf8; }
-  .s2 .step-badge { background: var(--exp); color: #000; }
-  .s2 .step-who { color: var(--exp); }
-  .s3 .step-badge { background: var(--exp); color: #000; }
-  .s3 .step-who { color: var(--exp); }
-  .s4 .step-badge { background: var(--bexp); color: #000; }
-  .s4 .step-who { color: var(--bexp); }
-  .s5 .step-badge { background: var(--bimp); color: #000; }
-  .s5 .step-who { color: var(--bimp); }
-  .s6 .step-badge { background: var(--imp); color: #000; }
-  .s6 .step-who { color: var(--imp); }
-  .s7 .step-badge { background: var(--bimp); color: #000; }
-  .s7 .step-who { color: var(--bimp); }
-  .s8 .step-badge { background: var(--bexp); color: #000; }
-  .s8 .step-who { color: var(--bexp); }
+  .s1 .step-badge { background: #4f46e5; color: #fff; } .s1 .step-who { color: #818cf8; }
+  .s2 .step-badge { background: var(--exp); color: #000; } .s2 .step-who { color: var(--exp); }
+  .s3 .step-badge { background: var(--exp); color: #000; } .s3 .step-who { color: var(--exp); }
+  .s4 .step-badge { background: var(--bexp); color: #000; } .s4 .step-who { color: var(--bexp); }
+  .s5 .step-badge { background: var(--bimp); color: #000; } .s5 .step-who { color: var(--bimp); }
+  .s6 .step-badge { background: var(--imp); color: #000; } .s6 .step-who { color: var(--imp); }
+  .s7 .step-badge { background: var(--bimp); color: #000; } .s7 .step-who { color: var(--bimp); }
+  .s8 .step-badge { background: var(--bexp); color: #000; } .s8 .step-who { color: var(--bexp); }
 
-  /* KEY DIFFERENCE */
-  .key-diff {
-    margin: 20px 16px 0;
-    background: linear-gradient(135deg, #1a1208, #211a0a);
-    border: 1px solid rgba(250,204,21,0.2);
-    border-radius: 16px;
-    padding: 16px 18px;
-  }
-  .key-diff h3 { color: var(--bimp); font-size: 0.9em; margin-bottom: 10px; }
-  .key-diff p { font-size: 0.8em; color: #b0a070; line-height: 1.7; }
-  .key-diff strong { color: var(--text); }
+  /* ESELSBRÜCKE */
+  .esel { background: linear-gradient(135deg, #1a1030, #120f28); border: 1px solid rgba(250,204,21,0.3); border-radius: 14px; padding: 14px 16px; }
+  .esel-tag { display: inline-block; background: rgba(250,204,21,0.12); color: var(--bimp); font-size: 0.66em; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .esel h3 { color: var(--bimp); font-size: 0.88em; margin-bottom: 10px; }
+  .esel-main { background: rgba(250,204,21,0.07); border: 1px solid rgba(250,204,21,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; text-align: center; }
+  .esel-main .big { font-size: 1em; font-weight: 800; color: var(--bimp); margin-bottom: 5px; }
+  .esel-main .sub { font-size: 0.76em; color: #94b892; line-height: 1.5; }
+  .esel-main .sub strong { color: var(--text); }
+  .esel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .esel-card { background: rgba(250,204,21,0.05); border-radius: 9px; padding: 9px 11px; font-size: 0.73em; border: 1px solid rgba(250,204,21,0.12); }
+  .esel-card .letter { font-size: 1em; font-weight: 800; color: var(--bimp); margin-bottom: 2px; }
+  .esel-card .meaning { color: #94b892; line-height: 1.4; }
+  .esel-card .meaning strong { color: var(--text); }
+
+  /* VERGLEICH */
+  .vergleich { background: linear-gradient(135deg, #0a0f1a, #0d1220); border: 1px solid rgba(129,140,248,0.25); border-radius: 14px; padding: 14px 16px; }
+  .vergleich h3 { color: var(--indigo); font-size: 0.88em; margin-bottom: 12px; }
+  .vg-table { width: 100%; border-collapse: collapse; font-size: 0.75em; }
+  .vg-table th { padding: 7px 8px; text-align: center; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.04em; }
+  .vg-table th.akk { color: #38bdf8; background: rgba(56,189,248,0.08); }
+  .vg-table th.ink { color: var(--exp); background: rgba(74,222,128,0.08); }
+  .vg-table th.cat { color: var(--muted); }
+  .vg-table td { padding: 7px 8px; border-top: 1px solid var(--border); color: #94b892; line-height: 1.4; }
+  .vg-table td.cat { color: var(--muted); font-weight: 600; font-size: 0.82em; }
+  .vg-table td.akk { color: #38bdf8; text-align: center; }
+  .vg-table td.ink { color: var(--exp); text-align: center; }
+  .fazit { margin-top: 10px; background: rgba(250,204,21,0.07); border: 1px solid rgba(250,204,21,0.2); border-radius: 9px; padding: 10px 12px; font-size: 0.76em; color: #94b892; line-height: 1.6; }
+  .fazit strong { color: var(--bimp); }
+
+  /* SUMMARY */
+  .summary { background: linear-gradient(135deg, #0f2a1a, #132218); border: 1px solid rgba(74,222,128,0.2); border-radius: 14px; padding: 14px 16px; }
+  .summary h3 { color: var(--exp); font-size: 0.88em; margin-bottom: 9px; }
+  .summary ul { list-style: none; }
+  .summary li { font-size: 0.78em; color: #94b892; line-height: 1.6; padding: 3px 0; display: flex; gap: 7px; }
+  .summary li::before { content: '✓'; color: var(--exp); font-weight: 700; flex-shrink: 0; }
+
+  /* BLOCKCHAIN */
+  .blockchain { background: linear-gradient(135deg, #0a0a1f, #0d1220); border: 1px solid rgba(99,102,241,0.35); border-radius: 14px; padding: 14px 16px; }
+  .bc-tag { display: inline-block; background: rgba(99,102,241,0.15); color: #818cf8; font-size: 0.66em; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .blockchain h3 { color: #818cf8; font-size: 0.88em; margin-bottom: 10px; }
+
+  .bc-verdict { background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.25); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .bc-verdict h4 { color: var(--exp); font-size: 0.82em; margin-bottom: 6px; }
+  .bc-verdict p { font-size: 0.76em; color: #94b892; line-height: 1.6; }
+  .bc-verdict strong { color: var(--text); }
+
+  .bc-warning { background: rgba(251,146,60,0.07); border: 1px solid rgba(251,146,60,0.25); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .bc-warning h4 { color: var(--imp); font-size: 0.82em; margin-bottom: 6px; }
+  .bc-warning p { font-size: 0.76em; color: #94b892; line-height: 1.6; }
+  .bc-warning strong { color: var(--text); }
+
+  .bc-steps { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
+  .bc-step { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15); border-radius: 9px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
+  .bc-step-num { background: #4f46e5; color: #fff; min-width: 22px; height: 22px; border-radius: 50%; font-size: 0.7em; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .bc-step-text { font-size: 0.76em; color: #94b892; line-height: 1.5; }
+  .bc-step-text strong { color: var(--text); }
+
+  .bc-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .bc-card { border-radius: 10px; padding: 11px 12px; font-size: 0.74em; }
+  .bc-card.old { background: rgba(107,138,105,0.08); border: 1px solid rgba(107,138,105,0.2); }
+  .bc-card.new { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.25); }
+  .bc-card .bc-card-title { font-weight: 700; margin-bottom: 6px; font-size: 0.9em; }
+  .bc-card.old .bc-card-title { color: var(--muted); }
+  .bc-card.new .bc-card-title { color: #818cf8; }
+  .bc-card ul { list-style: none; }
+  .bc-card li { color: #94b892; padding: 2px 0; line-height: 1.4; display: flex; gap: 6px; font-size: 0.95em; }
+  .bc-card.old li::before { content: '⚠️'; font-size: 0.85em; flex-shrink: 0; }
+  .bc-card.new li::before { content: '✅'; font-size: 0.85em; flex-shrink: 0; }
+
+  .oracle-box { background: rgba(163,230,53,0.06); border: 1px solid rgba(163,230,53,0.2); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .oracle-box h4 { color: var(--bexp); font-size: 0.82em; margin-bottom: 7px; }
+  .oracle-box p { font-size: 0.76em; color: #94b892; line-height: 1.6; }
+  .oracle-box strong { color: var(--text); }
+
+  .bc-bottom { background: rgba(250,204,21,0.07); border: 1px solid rgba(250,204,21,0.2); border-radius: 9px; padding: 10px 12px; font-size: 0.75em; color: #94b892; line-height: 1.6; }
+  .bc-bottom strong { color: var(--bimp); }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="compare-badge">vs. Akkreditiv</div>
   <h1>📄 Dokumenteninkasso</h1>
-  <p>Zahlung gegen Dokumente – einfacher, aber riskanter als das Akkreditiv</p>
-</div>
-
-<!-- COMPARE -->
-<div class="compare-box">
-  <div class="compare-card akk">
-    <div class="ctag">Akkreditiv</div>
-    <h4>🏦 Bank garantiert Zahlung</h4>
-    <p>Bank des Käufers verpflichtet sich vorab zur Zahlung. Sicherste Methode.</p>
-    <span class="verdict">🔒 Maximale Sicherheit</span>
-  </div>
-  <div class="compare-card ink">
-    <div class="ctag">Dokumenteninkasso</div>
-    <h4>📄 Dokumente gegen Zahlung</h4>
-    <p>Keine Bankgarantie. Käufer zahlt erst wenn er Docs will. Mehr Vertrauen nötig.</p>
-    <span class="verdict">⚡ Schneller & günstiger</span>
-  </div>
+  <p>Zahlung gegen Dokumente – schneller, günstiger, aber riskanter als das Akkreditiv</p>
 </div>
 
 <!-- ANALOGY -->
-<div class="analogy">
-  <span class="analogy-tag">🎮 So stell dir's vor</span>
-  <p>Du verkaufst dein altes Smartphone auf Willhaben. Statt PayPal-Garantie machst du's so: Du schickst das Handy zu einem <strong>Postamt (= Bank)</strong>. Das Postamt gibt es dem Käufer nur raus, wenn er <strong>sofort bar zahlt</strong>. Zahlt er nicht → bekommt er das Handy nicht, du kriegst es zurück. <strong>Kein Vorausbezahlen, keine Bankgarantie</strong> – aber geordnet durch einen Mittelsmann.</p>
+<div class="section-wrap">
+  <div class="analogy">
+    <span class="analogy-tag">📦 So stell dir's vor</span>
+    <h3>Das Postamt-Trick</h3>
+    <p>Du verkaufst dein altes Smartphone auf Willhaben. Statt PayPal-Garantie machst du's so: Du schickst das Handy zu einem <strong>Postamt</strong> (= Bank). Das Postamt gibt es dem Käufer nur raus, wenn er <strong>sofort bar zahlt</strong>. Zahlt er nicht → bekommt er das Handy nicht, du kriegst es zurück. <strong>Keine Bankgarantie</strong> – aber geordnet über einen Mittelsmann.</p>
+  </div>
 </div>
 
-<!-- RISK -->
-<div class="risk-section">
-  <div class="risk-label">⚠️ Risikoverteilung im Vergleich</div>
-  <div class="risk-bar-wrap">
+<!-- RISIKO -->
+<div class="section-wrap">
+  <div class="section-label">⚠️ Risikoverteilung im Vergleich</div>
+  <div class="risk-box">
     <div class="risk-row">
       <div class="risk-name" style="color:#38bdf8">Akkreditiv</div>
       <div class="risk-bar-outer"><div class="risk-bar-inner" style="width:15%;background:#38bdf8"></div></div>
@@ -301,143 +217,332 @@
       <div class="risk-note" style="color:var(--exp)">Mittleres Risiko</div>
     </div>
     <div class="risk-row">
-      <div class="risk-name" style="color:var(--imp)">Offene Rg.</div>
+      <div class="risk-name" style="color:var(--imp)">Offene Rgn.</div>
       <div class="risk-bar-outer"><div class="risk-bar-inner" style="width:90%;background:var(--imp)"></div></div>
       <div class="risk-note" style="color:var(--imp)">Hohes Risiko</div>
     </div>
   </div>
 </div>
 
-<!-- ACTORS -->
-<div class="actors-section">
-  <div class="section-title">🎭 Die 4 Akteure</div>
-  <div class="actors">
-    <div class="actor exp">
-      <div class="actor-icon">🏭</div>
-      <div class="actor-info">
-        <div class="actor-name">Exporteur</div>
-        <div class="actor-desc">Verkäufer – liefert & schickt Docs</div>
-      </div>
-    </div>
-    <div class="actor imp">
-      <div class="actor-icon">🛍️</div>
-      <div class="actor-info">
-        <div class="actor-name">Importeur</div>
-        <div class="actor-desc">Käufer – zahlt gegen Dokumente</div>
-      </div>
-    </div>
-    <div class="actor bexp">
-      <div class="actor-icon">🏦</div>
-      <div class="actor-info">
-        <div class="actor-name">Bank des Exporteurs</div>
-        <div class="actor-desc">Inkassobank – leitet Docs weiter</div>
-      </div>
-    </div>
-    <div class="actor bimp">
-      <div class="actor-icon">🏛️</div>
-      <div class="actor-info">
-        <div class="actor-name">Bank des Importeurs</div>
-        <div class="actor-desc">Präsentierbank – kassiert & zahlt aus</div>
-      </div>
+<!-- FLOWCHART -->
+<div class="section-wrap">
+  <div class="section-label">🖱️ Flussdiagramm – Pfeile antippen für Details</div>
+  <div class="flowchart-wrap">
+    <svg id="flow-svg" viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" font-family="'Space Grotesk',sans-serif">
+      <defs>
+        <marker id="a-green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#4ade80"/></marker>
+        <marker id="a-lime" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#a3e635"/></marker>
+        <marker id="a-yellow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#facc15"/></marker>
+        <marker id="a-orange" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#fb923c"/></marker>
+        <marker id="a-indigo" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#818cf8"/></marker>
+      </defs>
+
+      <!-- Exporteur top-left -->
+      <g class="flow-node" data-id="exporteur">
+        <rect x="6" y="10" width="90" height="48" rx="9" fill="#0d2a18" stroke="#4ade80" stroke-width="1.5"/>
+        <text x="51" y="29" text-anchor="middle" font-size="16">🏭</text>
+        <text x="51" y="43" text-anchor="middle" fill="#4ade80" font-size="8" font-weight="700">EXPORTEUR</text>
+        <text x="51" y="52" text-anchor="middle" fill="#3a6a3a" font-size="6.5">Verkäufer</text>
+      </g>
+
+      <!-- Importeur top-right -->
+      <g class="flow-node" data-id="importeur">
+        <rect x="244" y="10" width="90" height="48" rx="9" fill="#2a1608" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="289" y="29" text-anchor="middle" font-size="16">🛍️</text>
+        <text x="289" y="43" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="700">IMPORTEUR</text>
+        <text x="289" y="52" text-anchor="middle" fill="#7a4a1a" font-size="6.5">Käufer</text>
+      </g>
+
+      <!-- Bank Exporteur (Inkassobank) bottom-left -->
+      <g class="flow-node" data-id="bank-exp">
+        <rect x="6" y="210" width="90" height="50" rx="9" fill="#1a2208" stroke="#a3e635" stroke-width="1.5"/>
+        <text x="51" y="228" text-anchor="middle" font-size="14">🏦</text>
+        <text x="51" y="242" text-anchor="middle" fill="#a3e635" font-size="7" font-weight="700">INKASSOBANK</text>
+        <text x="51" y="252" text-anchor="middle" fill="#4a6a10" font-size="6">(Bank Exp.)</text>
+      </g>
+
+      <!-- Bank Importeur (Präsentierbank) bottom-right -->
+      <g class="flow-node" data-id="bank-imp">
+        <rect x="244" y="210" width="90" height="50" rx="9" fill="#2a2208" stroke="#facc15" stroke-width="1.5"/>
+        <text x="289" y="228" text-anchor="middle" font-size="14">🏛️</text>
+        <text x="289" y="242" text-anchor="middle" fill="#facc15" font-size="7" font-weight="700">PRÄSENTIERBANK</text>
+        <text x="289" y="252" text-anchor="middle" fill="#6a5a10" font-size="6">(Bank Imp.)</text>
+      </g>
+
+      <!-- CENTER: no guarantee label -->
+      <text x="170" y="118" text-anchor="middle" font-size="28" opacity="0.18">📬</text>
+      <text x="170" y="148" text-anchor="middle" fill="#2a3a22" font-size="8" font-weight="700">KEIN BANKGARANTIE</text>
+      <text x="170" y="160" text-anchor="middle" fill="#1e2a18" font-size="6.5">Bank = nur Vermittler</text>
+
+      <!-- ① Vertrag top -->
+      <g class="flow-arrow-btn" data-id="s1">
+        <line x1="99" y1="30" x2="240" y2="30" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/>
+        <line x1="240" y1="36" x2="99" y2="36" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a-indigo)"/>
+        <rect x="136" y="22" width="68" height="17" rx="5" fill="#16163a" stroke="#818cf8" stroke-width="0.8"/>
+        <text x="170" y="33" text-anchor="middle" fill="#a5b4fc" font-size="7.5" font-weight="700">① Vertrag</text>
+      </g>
+
+      <!-- ② Ware → Importeur (arc above, first!) -->
+      <g class="flow-arrow-btn" data-id="s2">
+        <path d="M 100 16 Q 170 -2 240 16" stroke="#4ade80" stroke-width="1.5" fill="none" marker-end="url(#a-green)"/>
+        <rect x="136" y="2" width="68" height="15" rx="5" fill="#0a2a12" stroke="#4ade80" stroke-width="0.8"/>
+        <text x="170" y="12" text-anchor="middle" fill="#4ade80" font-size="7" font-weight="700">② Ware 🚢</text>
+      </g>
+
+      <!-- ③ Exp → Bank Exp (left side diagonal) -->
+      <g class="flow-arrow-btn" data-id="s3">
+        <line x1="51" y1="61" x2="51" y2="206" stroke="#4ade80" stroke-width="1.5" marker-end="url(#a-green)"/>
+        <rect x="2" y="118" width="42" height="30" rx="6" fill="#0a2a12" stroke="#4ade80" stroke-width="0.8"/>
+        <text x="23" y="130" text-anchor="middle" fill="#4ade80" font-size="7.5" font-weight="700">③</text>
+        <text x="23" y="142" text-anchor="middle" fill="#3a6a3a" font-size="6.5">Docs</text>
+      </g>
+
+      <!-- ④ Bank Exp → Bank Imp (bottom, right) -->
+      <g class="flow-arrow-btn" data-id="s4">
+        <line x1="100" y1="232" x2="240" y2="232" stroke="#a3e635" stroke-width="1.5" marker-end="url(#a-lime)"/>
+        <rect x="134" y="220" width="72" height="16" rx="5" fill="#1a2208" stroke="#a3e635" stroke-width="0.8"/>
+        <text x="170" y="231" text-anchor="middle" fill="#a3e635" font-size="7" font-weight="700">④ Docs + Inkasso</text>
+      </g>
+
+      <!-- ⑤ Bank Imp → Imp (right side up) -->
+      <g class="flow-arrow-btn" data-id="s5">
+        <line x1="289" y1="206" x2="289" y2="62" stroke="#facc15" stroke-width="1.5" marker-end="url(#a-yellow)"/>
+        <rect x="296" y="118" width="40" height="30" rx="6" fill="#2a2208" stroke="#facc15" stroke-width="0.8"/>
+        <text x="316" y="130" text-anchor="middle" fill="#facc15" font-size="7.5" font-weight="700">⑤</text>
+        <text x="316" y="142" text-anchor="middle" fill="#6a5a10" font-size="6.5">Info</text>
+      </g>
+
+      <!-- ⑥ Imp → Bank Imp (pays, diagonal dashed) -->
+      <g class="flow-arrow-btn" data-id="s6">
+        <line x1="265" y1="62" x2="270" y2="206" stroke="#fb923c" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-orange)"/>
+        <rect x="210" y="140" width="52" height="28" rx="6" fill="#1a0e08" stroke="#fb923c" stroke-width="0.8"/>
+        <text x="236" y="152" text-anchor="middle" fill="#fb923c" font-size="7" font-weight="700">⑥ zahlt</text>
+        <text x="236" y="163" text-anchor="middle" fill="#fb923c" font-size="6.5">+ Docs 📂</text>
+      </g>
+
+      <!-- ⑦ Bank Imp → Bank Exp (bottom, left) -->
+      <g class="flow-arrow-btn" data-id="s7">
+        <line x1="240" y1="248" x2="100" y2="248" stroke="#facc15" stroke-width="1.5" marker-end="url(#a-yellow)"/>
+        <rect x="134" y="250" width="72" height="16" rx="5" fill="#2a2208" stroke="#facc15" stroke-width="0.8"/>
+        <text x="170" y="261" text-anchor="middle" fill="#facc15" font-size="7" font-weight="700">⑦ Überweisung 💸</text>
+      </g>
+
+      <!-- ⑧ Bank Exp → Exp (left up dashed) -->
+      <g class="flow-arrow-btn" data-id="s8">
+        <line x1="75" y1="206" x2="80" y2="62" stroke="#a3e635" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a-lime)"/>
+        <rect x="78" y="140" width="52" height="28" rx="6" fill="#1a2208" stroke="#a3e635" stroke-width="0.8"/>
+        <text x="104" y="152" text-anchor="middle" fill="#a3e635" font-size="7" font-weight="700">⑧ Geld</text>
+        <text x="104" y="163" text-anchor="middle" fill="#4a6a10" font-size="6.5">gutschrift 💰</text>
+      </g>
+
+    </svg>
+    <div class="flow-tooltip" id="flow-tooltip">
+      <div class="tt-title" id="tt-title"></div>
+      <div class="tt-body" id="tt-body"></div>
+      <span class="tt-close" id="tt-close">✕ schließen</span>
     </div>
   </div>
 </div>
 
-<!-- STEPS -->
-<div class="steps-section">
-  <div class="section-title">📋 Die 8 Schritte – Tippe zum Aufklappen</div>
+<!-- ACTORS -->
+<div class="section-wrap">
+  <div class="section-label">🎭 Die 4 Akteure</div>
+  <div class="actors">
+    <div class="actor exp"><div class="actor-icon">🏭</div><div class="actor-info"><div class="actor-name">Exporteur</div><div class="actor-desc">Verkäufer – liefert & schickt Docs</div></div></div>
+    <div class="actor imp"><div class="actor-icon">🛍️</div><div class="actor-info"><div class="actor-name">Importeur</div><div class="actor-desc">Käufer – zahlt gegen Dokumente</div></div></div>
+    <div class="actor bexp"><div class="actor-icon">🏦</div><div class="actor-info"><div class="actor-name">Inkassobank</div><div class="actor-desc">Bank des Exp. – leitet Docs weiter</div></div></div>
+    <div class="actor bimp"><div class="actor-icon">🏛️</div><div class="actor-info"><div class="actor-name">Präsentierbank</div><div class="actor-desc">Bank des Imp. – kassiert & gibt Docs</div></div></div>
+  </div>
+</div>
+
+<!-- 8 STEPS -->
+<div class="section-wrap">
+  <div class="section-label">📋 Die 8 Schritte – Tippe zum Aufklappen</div>
   <div id="steps-list"></div>
 </div>
 
-<!-- KEY DIFFERENCE -->
-<div class="key-diff">
-  <h3>💡 Der entscheidende Unterschied zum Akkreditiv</h3>
-  <p>Beim Akkreditiv <strong>garantiert die Bank vorab</strong>, dass gezahlt wird. Beim Dokumenteninkasso gibt es <strong>keine Garantie</strong> – die Bank ist nur Vermittler. Das Risiko: Der Importeur könnte die Ware ablehnen und <strong>nicht zahlen</strong>. Dann sitzt der Exporteur auf seiner Ware – irgendwo im Ausland. Deshalb nutzt man Dokumenteninkasso nur mit <strong>Handelspartnern, denen man halbwegs vertraut</strong>.</p>
+<!-- ESELSBRÜCKE -->
+<div class="section-wrap">
+  <div class="esel">
+    <span class="esel-tag">🧠 Eselsbrücke</span>
+    <h3>So merkst du dir das Prinzip</h3>
+    <div class="esel-main">
+      <div class="big">„Erst die Ware – dann das Geld"</div>
+      <div class="sub">Beim Dokumenteninkasso liefert der Exporteur <strong>zuerst</strong> – ohne Bankgarantie. Die Bank ist nur <strong>Briefträger</strong>, kein Bürge. Der Käufer bekommt die Dokumente (= Schlüssel zur Ware) nur wenn er zahlt. Aber: Er <strong>könnte auch ablehnen</strong> – das ist das Risiko!</div>
+    </div>
+    <div class="esel-grid">
+      <div class="esel-card"><div class="letter">D</div><div class="meaning"><strong>D</strong>okumente = <strong>D</strong>er Schlüssel zur Ware</div></div>
+      <div class="esel-card"><div class="letter">I</div><div class="meaning"><strong>I</strong>nkasso = <strong>I</strong>mmer erst liefern, dann hoffen</div></div>
+      <div class="esel-card"><div class="letter">B</div><div class="meaning"><strong>B</strong>ank = nur <strong>B</strong>riefträger, kein Bürge</div></div>
+      <div class="esel-card"><div class="letter">R</div><div class="meaning"><strong>R</strong>isiko liegt beim <strong>R</strong>ausschicker (Exporteur)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VERGLEICH -->
+<div class="section-wrap">
+  <div class="vergleich">
+    <h3>⚖️ Dokumenteninkasso vs. Akkreditiv</h3>
+    <table class="vg-table">
+      <tr><th class="cat"></th><th class="ink">📄 Dok.-Inkasso</th><th class="akk">💳 Akkreditiv</th></tr>
+      <tr><td class="cat">Bank garantiert?</td><td class="ink">❌ Nein</td><td class="akk">✅ Ja</td></tr>
+      <tr><td class="cat">Lieferung wann?</td><td class="ink" style="color:#94b892">Vor Zahlung</td><td class="akk" style="color:#94b892">Nach Garantie</td></tr>
+      <tr><td class="cat">Risiko Exporteur</td><td class="ink" style="color:#94b892">Mittel</td><td class="akk" style="color:#94b892">Sehr gering</td></tr>
+      <tr><td class="cat">Käufer ablehnen?</td><td class="ink" style="color:#fb923c">Möglich! ⚠️</td><td class="akk" style="color:#94b892">Nein</td></tr>
+      <tr><td class="cat">Kosten</td><td class="ink" style="color:#94b892">Günstiger</td><td class="akk" style="color:#94b892">Höher</td></tr>
+      <tr><td class="cat">Wann nutzen?</td><td class="ink" style="color:#94b892">Bekannte Partner</td><td class="akk" style="color:#94b892">Unbekannte Partner</td></tr>
+    </table>
+    <div class="fazit">💡 <strong>Merksatz:</strong> Dokumenteninkasso = <strong>Vertrauen + Bank als Mittler</strong>. Akkreditiv = <strong>Kein Vertrauen nötig + Bank als Bürge</strong>. Je besser du den Käufer kennst, desto eher reicht Dokumenteninkasso!</div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section-wrap">
+  <div class="summary">
+    <h3>✅ Wann wählt man Dokumenteninkasso?</h3>
+    <ul>
+      <li>Man kennt den Handelspartner schon und vertraut ihm halbwegs</li>
+      <li>Man will Bankgebühren sparen (günstiger als Akkreditiv)</li>
+      <li>Die Transaktion ist nicht zu groß und das Risiko überschaubar</li>
+      <li>Der Käufer ist in einem Land mit stabiler Wirtschaft & Rechtssystem</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BLOCKCHAIN -->
+<div class="section-wrap">
+  <div class="section-label">🔮 Bonus: Macht Blockchain hier Sinn?</div>
+  <div class="blockchain">
+    <span class="bc-tag">⛓️ Blockchain & Smart Contracts</span>
+    <h3>Dokumenteninkasso auf der Blockchain – ja, aber mit Twist!</h3>
+
+    <div class="bc-verdict">
+      <h4>✅ Kurze Antwort: Ja – und hier sogar besonders sinnvoll!</h4>
+      <p>Beim Akkreditiv ersetzt ein Smart Contract die <strong>Bankgarantie</strong>. Beim Dokumenteninkasso löst er das <strong>Hauptproblem</strong>: Der Exporteur liefert zuerst und hofft auf Zahlung. Ein Smart Contract kann das absichern – <strong>ohne dass eine Bank garantieren muss</strong>. Das Beste aus beiden Welten!</p>
+    </div>
+
+    <div class="bc-warning">
+      <h4>⚠️ Das Problem beim klassischen Dokumenteninkasso</h4>
+      <p>Der Exporteur liefert die Ware – und dann kann der Importeur sagen: <strong>„Nein danke, ich nehme die Ware nicht ab."</strong> Die Ware steckt irgendwo im Ausland, der Exporteur bekommt kein Geld und muss die Ware irgendwie zurückholen. Das ist teuer und nervig. Genau das löst die Blockchain-Version!</p>
+    </div>
+
+    <div class="section-label" style="margin-bottom:8px;">So würde es auf der Blockchain ablaufen:</div>
+    <div class="bc-steps">
+      <div class="bc-step">
+        <div class="bc-step-num">1</div>
+        <div class="bc-step-text"><strong>Smart Contract + Escrow:</strong> Importeur und Exporteur einigen sich. Importeur legt den Kaufbetrag in Stablecoins (z.B. USDC) in einen Smart Contract – wie ein digitaler Tresor. Geld ist gesperrt, aber noch nicht ausgezahlt.</div>
+      </div>
+      <div class="bc-step">
+        <div class="bc-step-num">2</div>
+        <div class="bc-step-text"><strong>Exporteur liefert:</strong> Exporteur verschickt die Ware und lädt die digitalen Lieferdokumente (Frachtbrief etc.) auf die Blockchain hoch. Sie sind dort unveränderbar gespeichert.</div>
+      </div>
+      <div class="bc-step">
+        <div class="bc-step-num">3</div>
+        <div class="bc-step-text"><strong>Oracle bestätigt Lieferung:</strong> Ein sogenanntes „Oracle" (ein System das echte Weltdaten in die Blockchain bringt – z.B. Tracking-Daten vom Schiff) bestätigt: „Ware ist angekommen." Das Oracle ist der Beweis.</div>
+      </div>
+      <div class="bc-step">
+        <div class="bc-step-num">4</div>
+        <div class="bc-step-text"><strong>Importeur bestätigt Annahme:</strong> Importeur klickt „Ware akzeptiert" → Smart Contract zahlt automatisch die USDC an den Exporteur aus. Dokumente werden freigegeben. Fertig in Sekunden!</div>
+      </div>
+      <div class="bc-step">
+        <div class="bc-step-num">4b</div>
+        <div class="bc-step-text"><strong>Was wenn Importeur ablehnt?</strong> Lehnt der Importeur ab, wird ein automatischer Schiedsrichter (Arbitrage-System oder vertrauenswürdiger Dritter) aktiviert. Der entscheidet auf Basis der Blockchain-Daten – transparent und nachvollziehbar für alle.</div>
+      </div>
+    </div>
+
+    <div class="oracle-box">
+      <h4>🔮 Was ist ein Oracle?</h4>
+      <p>Smart Contracts leben in der digitalen Welt der Blockchain. Aber die echte Welt (Schiffe, Häfen, Pakete) ist analog. Ein <strong>Oracle</strong> ist die Brücke dazwischen – es bringt echte Daten (Lieferbestätigungen, Tracking, Wetterdaten, Preise) in die Blockchain. Bekannte Oracle-Anbieter: <strong>Chainlink</strong> oder <strong>API3</strong>. Ohne Oracle weiß der Smart Contract nicht, ob die Ware wirklich geliefert wurde.</p>
+    </div>
+
+    <div class="bc-compare">
+      <div class="bc-card old">
+        <div class="bc-card-title">😴 Klassisch heute</div>
+        <ul>
+          <li>Exporteur liefert ohne Schutz</li>
+          <li>Käufer kann ablehnen</li>
+          <li>Tage bis Wochen</li>
+          <li>Papier-Dokumente</li>
+          <li>Streit schwer lösbar</li>
+        </ul>
+      </div>
+      <div class="bc-card new">
+        <div class="bc-card-title">🚀 Blockchain-Version</div>
+        <ul>
+          <li>Geld im Escrow gesperrt</li>
+          <li>Ablehnung = Arbitrage</li>
+          <li>Minuten statt Tage</li>
+          <li>Digitale Docs on-chain</li>
+          <li>Transparent & fair</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bc-bottom">
+      🎯 <strong>Fazit:</strong> Blockchain macht beim Dokumenteninkasso sogar <strong>mehr Sinn als beim Akkreditiv</strong> – weil es das größte Problem löst: der Exporteur muss nicht mehr blind vertrauen. Das Geld ist schon im Smart Contract gesperrt, bevor er liefert. Die Bank als Vermittler wird <strong>komplett überflüssig</strong>. Übrig bleibt: Code, Vertrauen, Stablecoins – und Handel in Sekunden statt Tagen. Das ist die Zukunft! 🚀
+    </div>
+  </div>
 </div>
 
 <script>
+const tooltips = {
+  exporteur: { title: '🏭 Exporteur (Verkäufer)', body: 'Liefert die Ware ZUERST – ohne Bankgarantie! Das ist der entscheidende Unterschied zum Akkreditiv. Er trägt das Risiko, dass der Importeur die Ware ablehnt.' },
+  importeur: { title: '🛍️ Importeur (Käufer)', body: 'Nimmt die Ware an und zahlt erst dann. Könnte die Ware theoretisch ablehnen – dann bekommt er keine Dokumente, aber der Exporteur sitzt auf seiner Ware im Ausland.' },
+  'bank-exp': { title: '🏦 Inkassobank (Bank des Exporteurs)', body: 'Kein Bürge, nur Vermittler! Nimmt die Dokumente vom Exporteur entgegen und leitet sie mit dem Inkassoauftrag weiter. Garantiert NICHTS.' },
+  'bank-imp': { title: '🏛️ Präsentierbank (Bank des Importeurs)', body: 'Informiert den Importeur, dass die Dokumente da sind. Gibt Docs nur gegen Zahlung raus. Kassiert den Betrag und überweist ihn weiter. Auch hier: keine Garantie!' },
+  s1: { title: '① Kaufvertrag', body: 'Exporteur und Importeur einigen sich auf Dokumenteninkasso als Zahlungsart. Sie kennen sich schon ein bisschen und vertrauen sich teilweise.' },
+  s2: { title: '② Exporteur verschickt Ware 🚢', body: 'Der Exporteur schickt die Waren SOFORT los – ohne vorherige Zahlungsgarantie! Das ist das Risiko. Er bekommt Transportdokumente als Beweis.' },
+  s3: { title: '③ Exporteur gibt Docs + Inkassoauftrag an seine Bank', body: 'Exporteur übergibt alle Lieferdokumente und sagt seiner Bank: „Holt mir das Geld beim Käufer ein!" Das nennt man Inkassoauftrag.' },
+  s4: { title: '④ Inkassobank → Präsentierbank', body: 'Bank des Exporteurs schickt Dokumente an Bank des Importeurs mit dem Auftrag: „Gebt dem Importeur die Docs nur gegen sofortige Zahlung!" Banken sind reine Vermittler.' },
+  s5: { title: '⑤ Präsentierbank informiert Importeur', body: 'Bank des Importeurs sagt dem Käufer: „Die Dokumente sind da. Du kannst sie gegen Zahlung abholen." Jetzt entscheidet der Importeur: annehmen oder ablehnen?' },
+  s6: { title: '⑥ Importeur zahlt und erhält Dokumente 💰', body: 'Wenn der Importeur annimmt: Er zahlt den Rechnungsbetrag bei seiner Bank und bekommt die Dokumente. Damit holt er die Ware ab. Lehnt er ab – kein Dokument, aber Exporteur hat Problem!' },
+  s7: { title: '⑦ Präsentierbank überweist an Inkassobank 💸', body: 'Bank des Importeurs überweist den Betrag an Bank des Exporteurs. Das Geld wandert durch das Bankensystem zurück zum Verkäufer.' },
+  s8: { title: '⑧ Exporteur bekommt Geld gutgeschrieben 🎉', body: 'Bank des Exporteurs schreibt den Betrag auf das Konto des Exporteurs. Fertig! Aber nur wenn der Importeur die Ware angenommen hat – sonst passiert hier gar nichts.' },
+};
+
+const tooltip = document.getElementById('flow-tooltip');
+const ttTitle = document.getElementById('tt-title');
+const ttBody = document.getElementById('tt-body');
+
+function showTooltip(id) {
+  const data = tooltips[id];
+  if (!data) return;
+  ttTitle.textContent = data.title;
+  ttBody.textContent = data.body;
+  tooltip.classList.add('visible');
+}
+
+document.getElementById('tt-close').addEventListener('click', () => tooltip.classList.remove('visible'));
+document.querySelectorAll('.flow-arrow-btn, .flow-node').forEach(el => {
+  el.addEventListener('click', e => { e.stopPropagation(); showTooltip(el.dataset.id); });
+});
+document.getElementById('flow-svg').addEventListener('click', () => tooltip.classList.remove('visible'));
+
 const steps = [
-  {
-    cls: 's1',
-    badge: '1',
-    short: 'Kaufvertrag: Zahlung per Dokumenteninkasso',
-    who: '🤝 Exporteur + Importeur einigen sich',
-    emoji: '📝',
-    explain: `<strong>Was passiert?</strong> Exporteur und Importeur schließen einen Kaufvertrag und vereinbaren Dokumenteninkasso als Zahlungsart.<br><br>
-    <strong>Warum diese Methode?</strong> Sie kennen sich schon ein bisschen, vertrauen sich teilweise – aber wollen trotzdem eine geordnete Abwicklung über ihre Banken als Vermittler.`,
-    flow: ['🏭 Exporteur', '→', '📋 Vertrag', '←', '🛍️ Importeur']
-  },
-  {
-    cls: 's2',
-    badge: '2',
-    short: 'Exporteur verschickt die Ware',
-    who: '🏭 Exporteur → 🚢 Transport',
-    emoji: '🚢',
-    explain: `<strong>Was passiert?</strong> Der Exporteur schickt die Waren los – <strong>ohne vorherige Zahlungsgarantie!</strong><br><br>
-    <strong>Achtung – hier liegt das Risiko:</strong> Der Exporteur liefert zuerst und hofft auf die Zahlung. Beim Akkreditiv war das umgekehrt geregelt (erst Garantie, dann Lieferung). Das ist der Hauptunterschied!`,
-    flow: ['🏭 Exporteur', '→', '📦 Ware abschicken', '→', '🌍 Unterwegs']
-  },
-  {
-    cls: 's3',
-    badge: '3',
-    short: 'Exporteur gibt Dokumente + Inkasso-Auftrag an seine Bank',
-    who: '🏭 Exporteur → 🏦 Bank des Exporteurs',
-    emoji: '📂',
-    explain: `<strong>Was passiert?</strong> Der Exporteur gibt seiner Bank alle Lieferdokumente (Frachtbrief, Rechnung, etc.) und erteilt ihr den <strong>Inkasso-Auftrag</strong>: „Holt mir das Geld beim Käufer ein!"<br><br>
-    <strong>Inkasso</strong> = Einziehung einer Forderung – die Bank treibt sozusagen die Schulden beim Käufer ein.`,
-    flow: ['🏭 Exporteur', '→', '📂 Docs + Auftrag', '→', '🏦 Bank Exp.']
-  },
-  {
-    cls: 's4',
-    badge: '4',
-    short: 'Bank des Exporteurs leitet Docs an Bank des Importeurs',
-    who: '🏦 Bank des Exporteurs → 🏛️ Bank des Importeurs',
-    emoji: '📨',
-    explain: `<strong>Was passiert?</strong> Die Inkassobank (Bank des Exporteurs) schickt die Dokumente an die <strong>Präsentierbank</strong> (Bank des Importeurs) mit dem Auftrag: „Gebt dem Importeur die Docs nur gegen Zahlung!"<br><br>
-    Die Banken sind hier reine Vermittler – sie <strong>garantieren nichts</strong>, sie leiten nur weiter.`,
-    flow: ['🏦 Bank Exp.', '→', '📂 Docs + Auftrag', '→', '🏛️ Bank Imp.']
-  },
-  {
-    cls: 's5',
-    badge: '5',
-    short: 'Bank des Importeurs informiert den Importeur',
-    who: '🏛️ Bank des Importeurs → 🛍️ Importeur',
-    emoji: '🔔',
-    explain: `<strong>Was passiert?</strong> Die Bank des Importeurs kontaktiert den Käufer: „Die Dokumente für deine Bestellung sind eingetroffen. Du kannst sie gegen Zahlung abholen."<br><br>
-    <strong>Jetzt liegt der Ball beim Importeur</strong> – nimmt er an oder lehnt er ab?`,
-    flow: ['🏛️ Bank Imp.', '→', '📬 Benachrichtigung', '→', '🛍️ Importeur']
-  },
-  {
-    cls: 's6',
-    badge: '6',
-    short: 'Importeur zahlt und erhält die Dokumente',
-    who: '🛍️ Importeur → 🏛️ Bank des Importeurs',
-    emoji: '💰',
-    explain: `<strong>Was passiert?</strong> Nimmt der Importeur die Ware an, <strong>bezahlt er den offenen Rechnungsbetrag</strong> bei seiner Bank und erhält dafür die Dokumente.<br><br>
-    <strong>Mit den Dokumenten</strong> kann er die Ware beim Hafen/Spediteur abholen. Ohne Zahlung → keine Docs → keine Ware.<br><br>
-    <strong>Aber:</strong> Er könnte auch ablehnen – dann hat der Exporteur ein Problem.`,
-    flow: ['🛍️ Importeur', '→', '💰 Zahlung', '→', '🏛️ Bank', '→', '📂 Docs']
-  },
-  {
-    cls: 's7',
-    badge: '7',
-    short: 'Bank des Importeurs überweist an Bank des Exporteurs',
-    who: '🏛️ Bank des Importeurs → 🏦 Bank des Exporteurs',
-    emoji: '🔄',
-    explain: `<strong>Was passiert?</strong> Die Bank des Importeurs überweist den Rechnungsbetrag an die Bank des Exporteurs.<br><br>
-    <strong>Das Geld wandert</strong> jetzt zurück durch das System – von Käufer-Bank zu Verkäufer-Bank. Kein Bargeld, alles sauber über Banküberweisung.`,
-    flow: ['🏛️ Bank Imp.', '→', '💸 Überweisung', '→', '🏦 Bank Exp.']
-  },
-  {
-    cls: 's8',
-    badge: '8',
-    short: 'Exporteur bekommt sein Geld gutgeschrieben',
-    who: '🏦 Bank des Exporteurs → 🏭 Exporteur',
-    emoji: '🎉',
-    explain: `<strong>Was passiert?</strong> Die Bank des Exporteurs schreibt dem Verkäufer den Rechnungsbetrag auf seinem Konto gut. ✅<br><br>
-    <strong>Ergebnis:</strong> Exporteur hat sein Geld. Importeur hat seine Dokumente und kann die Ware holen. Die Banken haben als Vermittler funktioniert – ohne Garantie, aber geordnet.`,
-    flow: ['🏦 Bank Exp.', '→', '💰 Gutschrift', '→', '🏭 Exporteur ✅']
-  }
+  { cls:'s1', badge:'1', short:'Kaufvertrag: Zahlung per Dokumenteninkasso', who:'🤝 Exporteur + Importeur', emoji:'📝',
+    explain:`<strong>Was passiert?</strong> Exporteur und Importeur schließen einen Kaufvertrag und vereinbaren Dokumenteninkasso als Zahlungsart.<br><br><strong>Warum diese Methode?</strong> Sie kennen sich schon, vertrauen sich teilweise – wollen aber trotzdem eine geordnete Abwicklung über ihre Banken als Vermittler.`,
+    flow:['🏭 Exporteur','→','📋 Vertrag','←','🛍️ Importeur'] },
+  { cls:'s2', badge:'2', short:'Exporteur verschickt die Ware', who:'🏭 Exporteur → 🚢 Transport', emoji:'🚢',
+    explain:`<strong>Was passiert?</strong> Der Exporteur schickt die Waren los – <strong>ohne vorherige Zahlungsgarantie!</strong><br><br><strong>Achtung – hier liegt das Risiko:</strong> Der Exporteur liefert zuerst und hofft auf die Zahlung. Beim Akkreditiv war das umgekehrt. Das ist der Hauptunterschied!`,
+    flow:['🏭 Exporteur','→','📦 Ware','→','🌍 Unterwegs'] },
+  { cls:'s3', badge:'3', short:'Exporteur gibt Dokumente + Inkasso-Auftrag an seine Bank', who:'🏭 Exporteur → 🏦 Inkassobank', emoji:'📂',
+    explain:`<strong>Was passiert?</strong> Der Exporteur gibt seiner Bank alle Lieferdokumente und erteilt den <strong>Inkasso-Auftrag</strong>: „Holt mir das Geld beim Käufer ein!"<br><br><strong>Inkasso</strong> = Einziehung einer Forderung. Die Bank treibt die Zahlung beim Käufer ein – aber garantiert nichts.`,
+    flow:['🏭 Exporteur','→','📂 Docs + Auftrag','→','🏦 Inkassobank'] },
+  { cls:'s4', badge:'4', short:'Inkassobank leitet Docs an Präsentierbank', who:'🏦 Inkassobank → 🏛️ Präsentierbank', emoji:'📨',
+    explain:`<strong>Was passiert?</strong> Die Inkassobank schickt die Dokumente an die <strong>Präsentierbank</strong> (Bank des Importeurs) mit dem Auftrag: „Gebt dem Importeur die Docs nur gegen Zahlung!"<br><br>Die Banken sind hier reine Vermittler – sie <strong>garantieren nichts!</strong>`,
+    flow:['🏦 Inkassobank','→','📂 Docs + Auftrag','→','🏛️ Präsentierbank'] },
+  { cls:'s5', badge:'5', short:'Präsentierbank informiert den Importeur', who:'🏛️ Präsentierbank → 🛍️ Importeur', emoji:'🔔',
+    explain:`<strong>Was passiert?</strong> Die Bank des Importeurs sagt dem Käufer: „Die Dokumente für deine Bestellung sind da. Du kannst sie gegen Zahlung abholen."<br><br><strong>Jetzt liegt der Ball beim Importeur</strong> – nimmt er an oder lehnt er ab?`,
+    flow:['🏛️ Präsentierbank','→','📬 Info','→','🛍️ Importeur'] },
+  { cls:'s6', badge:'6', short:'Importeur zahlt und erhält Dokumente', who:'🛍️ Importeur → 🏛️ Präsentierbank', emoji:'💰',
+    explain:`<strong>Was passiert?</strong> Nimmt der Importeur die Ware an, <strong>bezahlt er den offenen Rechnungsbetrag</strong> und erhält die Dokumente.<br><br>Mit den Dokumenten kann er die Ware abholen. Ohne Zahlung → keine Docs → keine Ware.<br><br><strong>Aber:</strong> Er könnte auch ablehnen – dann hat der Exporteur ein ernstes Problem.`,
+    flow:['🛍️ Importeur','→','💰 Zahlung','→','🏛️ Bank','→','📂 Docs'] },
+  { cls:'s7', badge:'7', short:'Präsentierbank überweist an Inkassobank', who:'🏛️ Präsentierbank → 🏦 Inkassobank', emoji:'🔄',
+    explain:`<strong>Was passiert?</strong> Die Präsentierbank überweist den Rechnungsbetrag an die Inkassobank.<br><br>Das Geld wandert jetzt sauber durch das Bankensystem zurück zum Exporteur.`,
+    flow:['🏛️ Präsentierbank','→','💸 Überweisung','→','🏦 Inkassobank'] },
+  { cls:'s8', badge:'8', short:'Exporteur bekommt sein Geld gutgeschrieben', who:'🏦 Inkassobank → 🏭 Exporteur', emoji:'🎉',
+    explain:`<strong>Was passiert?</strong> Die Inkassobank schreibt dem Exporteur den Rechnungsbetrag auf sein Konto gut. ✅<br><br><strong>Ergebnis:</strong> Exporteur hat sein Geld. Importeur hat seine Dokumente und holt die Ware ab. Die Banken haben als Vermittler funktioniert – ohne Garantie, aber geordnet.`,
+    flow:['🏦 Inkassobank','→','💰 Gutschrift','→','🏭 Exporteur ✅'] },
 ];
 
 const list = document.getElementById('steps-list');
@@ -457,7 +562,7 @@ steps.forEach(s => {
       <span class="step-emoji-big">${s.emoji}</span>
       <div class="step-explain">${s.explain}</div>
       <div class="step-flow">
-        ${s.flow.map(f => f === '→' ? `<span class="flow-arr">→</span>` : `<span class="flow-pill">${f}</span>`).join('')}
+        ${s.flow.map(f=>f==='→'?`<span class="flow-arr-txt">→</span>`:`<span class="flow-pill">${f}</span>`).join('')}
       </div>
     </div>
   `;
