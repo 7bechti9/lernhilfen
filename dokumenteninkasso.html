@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das Dokumenteninkasso – Schritt für Schritt</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f09;
+    --surface: #131a12;
+    --surface2: #1a221a;
+    --border: #2a3a29;
+    --text: #e8f0e6;
+    --muted: #6b8a69;
+    --exp: #4ade80;
+    --imp: #fb923c;
+    --bexp: #a3e635;
+    --bimp: #facc15;
+    --accent: #4ade80;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 60px 0;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0a0f09 0%, #0f1f0e 50%, #0a0f09 100%);
+    padding: 38px 20px 28px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 200px;
+    background: radial-gradient(ellipse, rgba(74,222,128,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .compare-badge {
+    display: inline-block;
+    background: #1a2e18;
+    border: 1px solid rgba(74,222,128,0.3);
+    color: var(--exp);
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2em;
+    background: linear-gradient(135deg, #4ade80, #facc15);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .hero p { color: var(--muted); font-size: 0.88em; max-width: 500px; margin: 0 auto; }
+
+  /* COMPARISON BOX */
+  .compare-box {
+    margin: 20px 16px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .compare-card {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+  }
+  .compare-card.akk { border-color: rgba(56,189,248,0.25); }
+  .compare-card.ink { border-color: rgba(74,222,128,0.25); }
+  .compare-card .ctag {
+    font-size: 0.65em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .compare-card.akk .ctag { color: #38bdf8; }
+  .compare-card.ink .ctag { color: var(--exp); }
+  .compare-card h4 { font-size: 0.82em; margin-bottom: 6px; }
+  .compare-card p { font-size: 0.72em; color: var(--muted); line-height: 1.5; }
+  .compare-card .verdict {
+    margin-top: 8px;
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .compare-card.akk .verdict { background: rgba(56,189,248,0.12); color: #38bdf8; }
+  .compare-card.ink .verdict { background: rgba(74,222,128,0.12); color: var(--exp); }
+
+  /* ANALOGY */
+  .analogy {
+    margin: 16px 16px 0;
+    background: linear-gradient(135deg, #101e0f, #162314);
+    border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+  .analogy-tag {
+    display: inline-block;
+    background: #1a2e18;
+    color: var(--exp);
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .analogy p { font-size: 0.82em; color: #94b892; line-height: 1.65; }
+  .analogy strong { color: var(--exp); }
+
+  /* RISK METER */
+  .risk-section { margin: 16px 16px 0; }
+  .risk-label { font-size: 0.7em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .risk-bar-wrap { background: var(--surface); border-radius: 12px; padding: 14px 16px; border: 1px solid var(--border); }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-row:last-child { margin-bottom: 0; }
+  .risk-name { font-size: 0.75em; font-weight: 600; min-width: 80px; }
+  .risk-bar-outer { flex: 1; height: 8px; background: #1e2e1c; border-radius: 4px; overflow: hidden; }
+  .risk-bar-inner { height: 100%; border-radius: 4px; transition: width 1s ease; }
+  .risk-note { font-size: 0.68em; color: var(--muted); min-width: 70px; text-align: right; }
+
+  /* ACTORS */
+  .actors-section { padding: 20px 16px 0; }
+  .section-title { font-size: 0.72em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .actors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .actor {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 13px 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .actor-icon { font-size: 1.7em; flex-shrink: 0; }
+  .actor-name { font-size: 0.78em; font-weight: 700; margin-bottom: 2px; }
+  .actor-desc { font-size: 0.67em; color: var(--muted); line-height: 1.3; }
+  .actor.exp { border-color: rgba(74,222,128,0.3); }
+  .actor.exp .actor-name { color: var(--exp); }
+  .actor.imp { border-color: rgba(251,146,60,0.3); }
+  .actor.imp .actor-name { color: var(--imp); }
+  .actor.bexp { border-color: rgba(163,230,53,0.3); }
+  .actor.bexp .actor-name { color: var(--bexp); }
+  .actor.bimp { border-color: rgba(250,204,21,0.3); }
+  .actor.bimp .actor-name { color: var(--bimp); }
+
+  /* STEPS */
+  .steps-section { padding: 20px 16px 0; }
+  .step {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .step:hover { border-color: rgba(74,222,128,0.35); }
+  .step.open { border-color: rgba(74,222,128,0.5); box-shadow: 0 0 20px rgba(74,222,128,0.05); }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+  }
+  .step-badge {
+    min-width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 0.8em;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-header-text { flex: 1; }
+  .step-short { font-size: 0.87em; font-weight: 600; color: var(--text); }
+  .step-who { font-size: 0.7em; margin-top: 2px; }
+  .step-chevron { color: var(--muted); transition: transform 0.3s; font-size: 0.85em; flex-shrink: 0; }
+  .step.open .step-chevron { transform: rotate(180deg); }
+
+  .step-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .step.open .step-body { display: block; }
+  .step-emoji-big { font-size: 2em; margin: 12px 0 8px; display: block; }
+  .step-explain { font-size: 0.81em; color: #94b892; line-height: 1.7; }
+  .step-explain strong { color: var(--text); }
+  .step-flow {
+    margin-top: 12px;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.73em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .flow-pill { padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+  .flow-arr { color: #3a5238; }
+
+  /* step colors */
+  .s1 .step-badge { background: #6366f1; color: #fff; }
+  .s1 .step-who { color: #818cf8; }
+  .s2 .step-badge { background: var(--exp); color: #000; }
+  .s2 .step-who { color: var(--exp); }
+  .s3 .step-badge { background: var(--exp); color: #000; }
+  .s3 .step-who { color: var(--exp); }
+  .s4 .step-badge { background: var(--bexp); color: #000; }
+  .s4 .step-who { color: var(--bexp); }
+  .s5 .step-badge { background: var(--bimp); color: #000; }
+  .s5 .step-who { color: var(--bimp); }
+  .s6 .step-badge { background: var(--imp); color: #000; }
+  .s6 .step-who { color: var(--imp); }
+  .s7 .step-badge { background: var(--bimp); color: #000; }
+  .s7 .step-who { color: var(--bimp); }
+  .s8 .step-badge { background: var(--bexp); color: #000; }
+  .s8 .step-who { color: var(--bexp); }
+
+  /* KEY DIFFERENCE */
+  .key-diff {
+    margin: 20px 16px 0;
+    background: linear-gradient(135deg, #1a1208, #211a0a);
+    border: 1px solid rgba(250,204,21,0.2);
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+  .key-diff h3 { color: var(--bimp); font-size: 0.9em; margin-bottom: 10px; }
+  .key-diff p { font-size: 0.8em; color: #b0a070; line-height: 1.7; }
+  .key-diff strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="compare-badge">vs. Akkreditiv</div>
+  <h1>📄 Dokumenteninkasso</h1>
+  <p>Zahlung gegen Dokumente – einfacher, aber riskanter als das Akkreditiv</p>
+</div>
+
+<!-- COMPARE -->
+<div class="compare-box">
+  <div class="compare-card akk">
+    <div class="ctag">Akkreditiv</div>
+    <h4>🏦 Bank garantiert Zahlung</h4>
+    <p>Bank des Käufers verpflichtet sich vorab zur Zahlung. Sicherste Methode.</p>
+    <span class="verdict">🔒 Maximale Sicherheit</span>
+  </div>
+  <div class="compare-card ink">
+    <div class="ctag">Dokumenteninkasso</div>
+    <h4>📄 Dokumente gegen Zahlung</h4>
+    <p>Keine Bankgarantie. Käufer zahlt erst wenn er Docs will. Mehr Vertrauen nötig.</p>
+    <span class="verdict">⚡ Schneller & günstiger</span>
+  </div>
+</div>
+
+<!-- ANALOGY -->
+<div class="analogy">
+  <span class="analogy-tag">🎮 So stell dir's vor</span>
+  <p>Du verkaufst dein altes Smartphone auf Willhaben. Statt PayPal-Garantie machst du's so: Du schickst das Handy zu einem <strong>Postamt (= Bank)</strong>. Das Postamt gibt es dem Käufer nur raus, wenn er <strong>sofort bar zahlt</strong>. Zahlt er nicht → bekommt er das Handy nicht, du kriegst es zurück. <strong>Kein Vorausbezahlen, keine Bankgarantie</strong> – aber geordnet durch einen Mittelsmann.</p>
+</div>
+
+<!-- RISK -->
+<div class="risk-section">
+  <div class="risk-label">⚠️ Risikoverteilung im Vergleich</div>
+  <div class="risk-bar-wrap">
+    <div class="risk-row">
+      <div class="risk-name" style="color:#38bdf8">Akkreditiv</div>
+      <div class="risk-bar-outer"><div class="risk-bar-inner" style="width:15%;background:#38bdf8"></div></div>
+      <div class="risk-note" style="color:#38bdf8">Sehr sicher</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="color:var(--exp)">Dok.-Inkasso</div>
+      <div class="risk-bar-outer"><div class="risk-bar-inner" style="width:55%;background:var(--exp)"></div></div>
+      <div class="risk-note" style="color:var(--exp)">Mittleres Risiko</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="color:var(--imp)">Offene Rg.</div>
+      <div class="risk-bar-outer"><div class="risk-bar-inner" style="width:90%;background:var(--imp)"></div></div>
+      <div class="risk-note" style="color:var(--imp)">Hohes Risiko</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTORS -->
+<div class="actors-section">
+  <div class="section-title">🎭 Die 4 Akteure</div>
+  <div class="actors">
+    <div class="actor exp">
+      <div class="actor-icon">🏭</div>
+      <div class="actor-info">
+        <div class="actor-name">Exporteur</div>
+        <div class="actor-desc">Verkäufer – liefert & schickt Docs</div>
+      </div>
+    </div>
+    <div class="actor imp">
+      <div class="actor-icon">🛍️</div>
+      <div class="actor-info">
+        <div class="actor-name">Importeur</div>
+        <div class="actor-desc">Käufer – zahlt gegen Dokumente</div>
+      </div>
+    </div>
+    <div class="actor bexp">
+      <div class="actor-icon">🏦</div>
+      <div class="actor-info">
+        <div class="actor-name">Bank des Exporteurs</div>
+        <div class="actor-desc">Inkassobank – leitet Docs weiter</div>
+      </div>
+    </div>
+    <div class="actor bimp">
+      <div class="actor-icon">🏛️</div>
+      <div class="actor-info">
+        <div class="actor-name">Bank des Importeurs</div>
+        <div class="actor-desc">Präsentierbank – kassiert & zahlt aus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="steps-section">
+  <div class="section-title">📋 Die 8 Schritte – Tippe zum Aufklappen</div>
+  <div id="steps-list"></div>
+</div>
+
+<!-- KEY DIFFERENCE -->
+<div class="key-diff">
+  <h3>💡 Der entscheidende Unterschied zum Akkreditiv</h3>
+  <p>Beim Akkreditiv <strong>garantiert die Bank vorab</strong>, dass gezahlt wird. Beim Dokumenteninkasso gibt es <strong>keine Garantie</strong> – die Bank ist nur Vermittler. Das Risiko: Der Importeur könnte die Ware ablehnen und <strong>nicht zahlen</strong>. Dann sitzt der Exporteur auf seiner Ware – irgendwo im Ausland. Deshalb nutzt man Dokumenteninkasso nur mit <strong>Handelspartnern, denen man halbwegs vertraut</strong>.</p>
+</div>
+
+<script>
+const steps = [
+  {
+    cls: 's1',
+    badge: '1',
+    short: 'Kaufvertrag: Zahlung per Dokumenteninkasso',
+    who: '🤝 Exporteur + Importeur einigen sich',
+    emoji: '📝',
+    explain: `<strong>Was passiert?</strong> Exporteur und Importeur schließen einen Kaufvertrag und vereinbaren Dokumenteninkasso als Zahlungsart.<br><br>
+    <strong>Warum diese Methode?</strong> Sie kennen sich schon ein bisschen, vertrauen sich teilweise – aber wollen trotzdem eine geordnete Abwicklung über ihre Banken als Vermittler.`,
+    flow: ['🏭 Exporteur', '→', '📋 Vertrag', '←', '🛍️ Importeur']
+  },
+  {
+    cls: 's2',
+    badge: '2',
+    short: 'Exporteur verschickt die Ware',
+    who: '🏭 Exporteur → 🚢 Transport',
+    emoji: '🚢',
+    explain: `<strong>Was passiert?</strong> Der Exporteur schickt die Waren los – <strong>ohne vorherige Zahlungsgarantie!</strong><br><br>
+    <strong>Achtung – hier liegt das Risiko:</strong> Der Exporteur liefert zuerst und hofft auf die Zahlung. Beim Akkreditiv war das umgekehrt geregelt (erst Garantie, dann Lieferung). Das ist der Hauptunterschied!`,
+    flow: ['🏭 Exporteur', '→', '📦 Ware abschicken', '→', '🌍 Unterwegs']
+  },
+  {
+    cls: 's3',
+    badge: '3',
+    short: 'Exporteur gibt Dokumente + Inkasso-Auftrag an seine Bank',
+    who: '🏭 Exporteur → 🏦 Bank des Exporteurs',
+    emoji: '📂',
+    explain: `<strong>Was passiert?</strong> Der Exporteur gibt seiner Bank alle Lieferdokumente (Frachtbrief, Rechnung, etc.) und erteilt ihr den <strong>Inkasso-Auftrag</strong>: „Holt mir das Geld beim Käufer ein!"<br><br>
+    <strong>Inkasso</strong> = Einziehung einer Forderung – die Bank treibt sozusagen die Schulden beim Käufer ein.`,
+    flow: ['🏭 Exporteur', '→', '📂 Docs + Auftrag', '→', '🏦 Bank Exp.']
+  },
+  {
+    cls: 's4',
+    badge: '4',
+    short: 'Bank des Exporteurs leitet Docs an Bank des Importeurs',
+    who: '🏦 Bank des Exporteurs → 🏛️ Bank des Importeurs',
+    emoji: '📨',
+    explain: `<strong>Was passiert?</strong> Die Inkassobank (Bank des Exporteurs) schickt die Dokumente an die <strong>Präsentierbank</strong> (Bank des Importeurs) mit dem Auftrag: „Gebt dem Importeur die Docs nur gegen Zahlung!"<br><br>
+    Die Banken sind hier reine Vermittler – sie <strong>garantieren nichts</strong>, sie leiten nur weiter.`,
+    flow: ['🏦 Bank Exp.', '→', '📂 Docs + Auftrag', '→', '🏛️ Bank Imp.']
+  },
+  {
+    cls: 's5',
+    badge: '5',
+    short: 'Bank des Importeurs informiert den Importeur',
+    who: '🏛️ Bank des Importeurs → 🛍️ Importeur',
+    emoji: '🔔',
+    explain: `<strong>Was passiert?</strong> Die Bank des Importeurs kontaktiert den Käufer: „Die Dokumente für deine Bestellung sind eingetroffen. Du kannst sie gegen Zahlung abholen."<br><br>
+    <strong>Jetzt liegt der Ball beim Importeur</strong> – nimmt er an oder lehnt er ab?`,
+    flow: ['🏛️ Bank Imp.', '→', '📬 Benachrichtigung', '→', '🛍️ Importeur']
+  },
+  {
+    cls: 's6',
+    badge: '6',
+    short: 'Importeur zahlt und erhält die Dokumente',
+    who: '🛍️ Importeur → 🏛️ Bank des Importeurs',
+    emoji: '💰',
+    explain: `<strong>Was passiert?</strong> Nimmt der Importeur die Ware an, <strong>bezahlt er den offenen Rechnungsbetrag</strong> bei seiner Bank und erhält dafür die Dokumente.<br><br>
+    <strong>Mit den Dokumenten</strong> kann er die Ware beim Hafen/Spediteur abholen. Ohne Zahlung → keine Docs → keine Ware.<br><br>
+    <strong>Aber:</strong> Er könnte auch ablehnen – dann hat der Exporteur ein Problem.`,
+    flow: ['🛍️ Importeur', '→', '💰 Zahlung', '→', '🏛️ Bank', '→', '📂 Docs']
+  },
+  {
+    cls: 's7',
+    badge: '7',
+    short: 'Bank des Importeurs überweist an Bank des Exporteurs',
+    who: '🏛️ Bank des Importeurs → 🏦 Bank des Exporteurs',
+    emoji: '🔄',
+    explain: `<strong>Was passiert?</strong> Die Bank des Importeurs überweist den Rechnungsbetrag an die Bank des Exporteurs.<br><br>
+    <strong>Das Geld wandert</strong> jetzt zurück durch das System – von Käufer-Bank zu Verkäufer-Bank. Kein Bargeld, alles sauber über Banküberweisung.`,
+    flow: ['🏛️ Bank Imp.', '→', '💸 Überweisung', '→', '🏦 Bank Exp.']
+  },
+  {
+    cls: 's8',
+    badge: '8',
+    short: 'Exporteur bekommt sein Geld gutgeschrieben',
+    who: '🏦 Bank des Exporteurs → 🏭 Exporteur',
+    emoji: '🎉',
+    explain: `<strong>Was passiert?</strong> Die Bank des Exporteurs schreibt dem Verkäufer den Rechnungsbetrag auf seinem Konto gut. ✅<br><br>
+    <strong>Ergebnis:</strong> Exporteur hat sein Geld. Importeur hat seine Dokumente und kann die Ware holen. Die Banken haben als Vermittler funktioniert – ohne Garantie, aber geordnet.`,
+    flow: ['🏦 Bank Exp.', '→', '💰 Gutschrift', '→', '🏭 Exporteur ✅']
+  }
+];
+
+const list = document.getElementById('steps-list');
+steps.forEach(s => {
+  const div = document.createElement('div');
+  div.className = `step ${s.cls}`;
+  div.innerHTML = `
+    <div class="step-header">
+      <div class="step-badge">${s.badge}</div>
+      <div class="step-header-text">
+        <div class="step-short">${s.short}</div>
+        <div class="step-who">${s.who}</div>
+      </div>
+      <div class="step-chevron">▼</div>
+    </div>
+    <div class="step-body">
+      <span class="step-emoji-big">${s.emoji}</span>
+      <div class="step-explain">${s.explain}</div>
+      <div class="step-flow">
+        ${s.flow.map(f => f === '→' ? `<span class="flow-arr">→</span>` : `<span class="flow-pill">${f}</span>`).join('')}
+      </div>
+    </div>
+  `;
+  div.querySelector('.step-header').addEventListener('click', () => {
+    const isOpen = div.classList.contains('open');
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('open'));
+    if (!isOpen) div.classList.add('open');
+  });
+  list.appendChild(div);
+});
+</script>
+</body>
+</html>
